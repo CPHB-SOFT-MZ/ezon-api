@@ -18,5 +18,5 @@ public class DBAFormatter implements DataFormatter{
     public List<Product> formatProducts(String jsonFormat) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+      
 }
