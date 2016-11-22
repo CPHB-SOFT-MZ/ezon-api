@@ -31,10 +31,21 @@ and open the template in the editor.
         <script src="app/components/services.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>Demo Page</div>
         <div ng-controller="AppLoginCtrl">
             <div ng-view></div>
         </div>
         <div ng-controller=""></div>
+        <script type="text/ng-template" id="errorModal.html">
+            <div class="modal-header">
+            <h3 class="modal-title">Error!</h3>
+            </div>
+            <div class="modal-body">
+            <p>{{error}}</p>
+            </div>
+            <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()" autofocus>OK</button>
+            </div>
+        </script>
     </body>
 </html>
