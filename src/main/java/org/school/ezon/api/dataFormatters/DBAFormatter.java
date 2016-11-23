@@ -27,6 +27,12 @@ public class DBAFormatter implements DataFormatter {
 //        }
 //        return instance;
 //    }
+    
+    /**
+     * 
+     * @param jsonFormat
+     * @return If the input is valid, the method will return a List of Products, else it will throw an exception. 
+     */
     @Override
     public List<Product> formatProducts(String jsonFormat) {
 
