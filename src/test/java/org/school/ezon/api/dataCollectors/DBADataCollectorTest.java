@@ -20,7 +20,7 @@ import org.school.ezon.api.pojo.Product;
  * @author philliphbrink
  */
 public class DBADataCollectorTest {
-    
+
     public DBADataCollectorTest() {
     }
 //    @BeforeClass
@@ -57,24 +57,24 @@ public class DBADataCollectorTest {
 //        assertEquals(expResult, result);
 //        fail("The test case is a prototype.");
 //    }
-
     /**
      * Test of getProductsBySearchAndCategory method, of class DBADataCollector.
      */
+    
     @Test
     public void testGetProductsBySearchAndCategory() {
         String category = "1";
         String searchString = "audi";
         given()
-        .contentType("application/json")
-        .header("Content-Type", "application/json")
-        .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
-        .pathParam("searchString", searchString)
-        .pathParam("category", category)       
-        .when()
-        .get("https://api.dba.dk/api/v2/ads/cassearch?q={searchString}&cla={category}")
-        .then()
-        .statusCode(200);
+                .contentType("application/json")
+                .header("Content-Type", "application/json")
+                .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
+                .pathParam("category", category)
+                .pathParam("searchString", searchString)
+                .when()
+                .get("https://api.dba.dk/api/v2/ads/cassearch?q={searchString}&cla={category}")
+                .then()
+                .statusCode(200);
     }
-    
+
 }
