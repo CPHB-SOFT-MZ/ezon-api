@@ -5,18 +5,20 @@
  */
 package org.school.ezon.api.dataCollectors;
 
+import static io.restassured.RestAssured.given;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.school.ezon.api.pojo.Product;
+import static io.restassured.RestAssured.given;
 
 /**
  *
  * @author philliphbrink
  */
-public class DBADataCollectorTest {
-    
-    public DBADataCollectorTest() {
+public class IntergrationDBADataCollectorTest {
+
+    public IntergrationDBADataCollectorTest() {
     }
 
     /**
@@ -46,18 +48,24 @@ public class DBADataCollectorTest {
 //        assertEquals(expResult, result);
 //        fail("The test case is a prototype.");
 //    }
-
     /**
      * Test of getProductsBySearchAndCategory method, of class DBADataCollector.
+     * This method test that we have a connection to the api.
      */
     @Test
     public void testGetProductsBySearchAndCategory() {
-        System.out.println("Test that we get a list that is not empty from DBA with category and search word");
         String category = "1";
         String searchString = "audi";
-        DBADataCollector instance = new DBADataCollector();
-        List<Product> result = instance.getProductsBySearchAndCategory(category, searchString);
-        assertTrue(!result.isEmpty());
+        given()
+                .contentType("application/json")
+                .header("Content-Type", "application/json")
+                .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
+                .pathParam("category", category)
+                .pathParam("searchString", searchString)
+                .when()
+                .get("https://api.dba.dk/api/v2/ads/cassearch?q={searchString}&cla={category}")
+                .then()
+                .statusCode(200);
     }
-    
+
 }

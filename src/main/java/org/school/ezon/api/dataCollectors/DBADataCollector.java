@@ -6,24 +6,13 @@
 package org.school.ezon.api.dataCollectors;
 
 import java.util.List;
-<<<<<<< HEAD
-import org.apache.http.Header;
-=======
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
->>>>>>> c9cb05e36ecb9aa9738f15c56bdfcfe4fd9c33a4
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
 import org.school.ezon.api.dataFormatters.DBAFormatter;
 import org.school.ezon.api.dataFormatters.DataFormatter;
 import org.school.ezon.api.pojo.Product;
-import org.json.simple.parser.JSONParser;
-
 
 /**
  *
@@ -41,11 +30,17 @@ public class DBADataCollector implements DataCollector {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * This method takes a category - number, searchString - String and makes a connection to DBA Api and retruns a list of products.
+     * @param category
+     * @param searchString
+     * @return The method returns a list of products. If category is not a number i will throw Exception.
+     */
     @Override
     public List<Product> getProductsBySearchAndCategory(String category, String searchString) {
 
         DataFormatter dataFormatter = new DBAFormatter();
-        
+
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("https://api.dba.dk/api/v2/ads/cassearch?q=" + searchString + "&cla=" + category);
 
