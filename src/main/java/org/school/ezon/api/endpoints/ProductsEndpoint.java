@@ -46,9 +46,9 @@ public class ProductsEndpoint {
     @Path("/{searchString}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getProductsBySearch(@PathParam("searchString") String search) {
+    public Response getProductsBySearch(@PathParam("searchString") String search) {
         //TODO return proper representation object
-        return "hej"; //data.getProductsBySearch(search);
+        return Response.ok(data.getProductsBySearch(search)).build();
     }
     
     /**
@@ -60,9 +60,9 @@ public class ProductsEndpoint {
     @Path("/category/{category}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Product> getProductsByCategory(@PathParam("category") String category) {
+    public Response getProductsByCategory(@PathParam("category") String category) {
         //TODO return proper representation object
-        return data.getProductsFromCategory(category);
+        return Response.ok(data.getProductsFromCategory(category)).build();
     }
     
     /**
