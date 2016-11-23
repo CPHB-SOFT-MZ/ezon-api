@@ -10,18 +10,27 @@ package org.school.ezon.api.pojo;
  * @author Mikkel
  */
 public class Product {
-    
-    private String  title;
-    private String  category;
-    private String  description;
-    private float   price;
-    private String  url;
-    private String  site;
-    private String  thumbnailImage;
 
-    
-    public Product(){}
-    
+    private String title;
+    private String category;
+    private String description;
+    private float price;
+    private String url;
+    private String site;
+    private String thumbnailImage;
+
+    public Product(String title, String description, float price, String url, String site, String thumbnailImage) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.url = url;
+        this.site = site;
+        this.thumbnailImage = thumbnailImage;
+    }
+
+    public Product() {
+    }
+
     public String getTitle() {
         return title;
     }
@@ -77,6 +86,5 @@ public class Product {
     public void setThumbnailImage(String thumbnailImage) {
         this.thumbnailImage = thumbnailImage;
     }
-    
-    
+
 }
