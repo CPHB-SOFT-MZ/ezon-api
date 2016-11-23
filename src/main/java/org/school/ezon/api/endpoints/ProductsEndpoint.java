@@ -45,9 +45,9 @@ public class ProductsEndpoint {
     @Path("/{searchString}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Product> getProductsBySearch(@PathParam("searchString") String search) {
+    public String getProductsBySearch(@PathParam("searchString") String search) {
         //TODO return proper representation object
-        return data.getProductsBySearch(search);
+        return "hej"; //data.getProductsBySearch(search);
     }
     
     /**
