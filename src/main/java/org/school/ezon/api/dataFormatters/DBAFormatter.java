@@ -5,6 +5,11 @@
  */
 package org.school.ezon.api.dataFormatters;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.ArrayList;
 import java.util.List;
 import org.school.ezon.api.pojo.Product;
 
@@ -12,11 +17,50 @@ import org.school.ezon.api.pojo.Product;
  *
  * @author Mikkel
  */
-public class DBAFormatter implements DataFormatter{
+public class DBAFormatter implements DataFormatter {
 
+//    private static DBAFormatter instance = null;
+//
+//    public static DBAFormatter getClassInstance() {
+//        if (instance == null) {
+//            instance = new DBAFormatter();
+//        }
+//        return instance;
+//    }
     @Override
     public List<Product> formatProducts(String jsonFormat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        List<Product> products = new ArrayList();
+
+        JsonArray jsonArr = new JsonParser()
+                .parse(jsonFormat).getAsJsonObject()
+                .get("ads").getAsJsonArray();
+
+        for (JsonElement e : jsonArr) {
+
+            JsonObject jsonAd = e.getAsJsonObject();
+
+            String title = jsonAd.get("title").getAsString();
+
+            String adLink = jsonAd.getAsJsonObject("ad-url").get("href").getAsString();
+
+            String description = jsonAd.get("description").getAsString();
+
+            String thumbnail = "";
+            if (jsonAd.getAsJsonArray("pictures").size() > 0) {
+
+                thumbnail = jsonAd.getAsJsonArray("pictures").get(0)
+                        .getAsJsonObject().getAsJsonArray("link").get(0)
+                        .getAsJsonObject().get("href").getAsString();
+            }
+
+            int price = jsonAd.get("price").getAsInt();
+
+            Product product = new Product(title, description, price, adLink, "dba", thumbnail);
+            products.add(product);
+        }
+
+        return products;
     }
-      
+
 }
