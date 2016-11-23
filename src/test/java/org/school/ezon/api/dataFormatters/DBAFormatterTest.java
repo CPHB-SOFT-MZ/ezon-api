@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.school.ezon.api.dataCollectors.DBADataCollector;
 import org.school.ezon.api.pojo.Product;
 
 /**
@@ -21,6 +22,7 @@ import org.school.ezon.api.pojo.Product;
 public class DBAFormatterTest {
 
     DBAFormatter dbaFormatter;
+    DBADataCollector dbaDataCollector;
 
     public DBAFormatterTest() {
     }
@@ -36,6 +38,7 @@ public class DBAFormatterTest {
     @Before
     public void setUp() {
         dbaFormatter = new DBAFormatter();
+        dbaDataCollector = new DBADataCollector();
     }
 
     @After
@@ -48,7 +51,7 @@ public class DBAFormatterTest {
     @Test
     public void testFormatProducts() {
 
-        List<Product> products = dbaFormatter.formatProducts("json");
+        List<Product> products = dbaDataCollector.getProductsBySearchAndCategory("1", "audi");
 
         assertTrue(products.size() > 1);
 
@@ -60,6 +63,10 @@ public class DBAFormatterTest {
             assertNotNull(p.getPrice());
             assertNotNull(p.getUrl());
         }
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }

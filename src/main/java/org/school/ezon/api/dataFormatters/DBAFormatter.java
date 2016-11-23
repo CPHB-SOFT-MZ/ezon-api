@@ -27,11 +27,11 @@ public class DBAFormatter implements DataFormatter {
 //        }
 //        return instance;
 //    }
-
     @Override
     public List<Product> formatProducts(String jsonFormat) {
-        
+
         List<Product> products = new ArrayList();
+
         JsonArray jsonArr = new JsonParser()
                 .parse(jsonFormat).getAsJsonObject()
                 .get("ads").getAsJsonArray();
