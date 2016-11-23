@@ -13,6 +13,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.school.ezon.api.dataCollectors.DBADataCollector;
 import org.school.ezon.api.dataCollectors.DataCollector;
 import org.school.ezon.api.pojo.Product;
@@ -73,8 +74,8 @@ public class ProductsEndpoint {
     @Path("/{category}/{searchString}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Product> getProductsBySearchAndCategory(@PathParam("searchString") String search, @PathParam("category") String category) {
+    public Response getProductsBySearchAndCategory(@PathParam("searchString") String search, @PathParam("category") String category) {
         //TODO return proper representation object
-        return data.getProductsBySearchAndCategory(category, search);
+        return Response.ok(data.getProductsBySearchAndCategory(category, search)).build();
     }
 }

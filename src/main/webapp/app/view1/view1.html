@@ -1,10 +1,11 @@
 <div class="container">
     View1 Page: {{msgFromFactory}}
     <button ng-click="getInfo()">Press me</button>
-    {{data.title}}
-    {{data.description}}
-    {{data.price}}
-    {{data.url}}
-    {{data.site}}
-    {{data.thumbnailImage}}
+    <div>
+        <table>
+            <tr ng-repeat="product in data">
+                <td>{{product.title}}</td>
+            </tr>
+        </table>
+    </div>
 </div>

@@ -11,18 +11,15 @@ angular.module('myApp.view1', ['ngRoute'])
         .controller('View1Ctrl', ["InfoFactory", "InfoService", '$scope','$http', function (InfoFactory, InfoService, $scope, $http) {
                 $scope.msgFromFactory = InfoFactory.getInfo();
                 $scope.msgFromService = InfoService.getInfo();
-                $scope.data;
                 $scope.getInfo = function () {
                     $http({
-                        url: 'http://localhost:8084/api/api/products/' + "Mac",
+                        url: 'http://localhost:8084/api/api/products/1/Mac',
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {
                                 console.log(data);
-                                if (data.error) {
-                                    alert("Error: " + data.message);
-                                }
                                 $scope.data = data;
+                                console.log($scope.data);
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
