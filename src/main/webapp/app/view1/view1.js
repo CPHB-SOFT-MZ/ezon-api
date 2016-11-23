@@ -14,7 +14,7 @@ angular.module('myApp.view1', ['ngRoute'])
                 $scope.data;
                 $scope.getInfo = function () {
                     $http({
-                        url: 'http://localhost:8084/api/api/products',
+                        url: 'http://localhost:8084/api/api/products/' + "Mac",
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {

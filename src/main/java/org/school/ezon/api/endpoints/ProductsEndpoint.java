@@ -49,4 +49,32 @@ public class ProductsEndpoint {
         //TODO return proper representation object
         return data.getProductsBySearch(search);
     }
+    
+    /**
+     * Retrieves representation of an instance of
+     * org.school.ezon.api.endpoints.ProductsEndpoint
+     *
+     * @return an instance of java.lang.String
+     */
+    @Path("/category/{category}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Product> getProductsByCategory(@PathParam("category") String category) {
+        //TODO return proper representation object
+        return data.getProductsFromCategory(category);
+    }
+    
+    /**
+     * Retrieves representation of an instance of
+     * org.school.ezon.api.endpoints.ProductsEndpoint
+     *
+     * @return an instance of java.lang.String
+     */
+    @Path("/{category}/{searchString}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Product> getProductsBySearchAndCategory(@PathParam("searchString") String search, @PathParam("category") String category) {
+        //TODO return proper representation object
+        return data.getProductsBySearchAndCategory(category, search);
+    }
 }
