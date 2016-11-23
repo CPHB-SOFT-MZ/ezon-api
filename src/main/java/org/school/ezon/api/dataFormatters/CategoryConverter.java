@@ -12,19 +12,22 @@ import java.util.HashMap;
  * @author Mikkel
  */
 public class CategoryConverter {
-    private HashMap<String, HashMap<String, String>> categories;
+    private final HashMap<String, HashMap<String, String>> categories;
     
     public CategoryConverter(){
         this.categories = new HashMap();
         this.categories.put("cars", new HashMap());
-        this.categories.get("cars").put("dba", "Biler");
-        this.categories.get("cars").put("amazon", "CarsAndVehicles");
-        this.categories.get("cars").put("ebay", "Cars");
+        this.categories.get("cars").put("dba", "1");
+        this.categories.get("cars").put("amazon", "248878031");
     }
     
     
-    public String convert(String category, String destination){
+    public String convertCategoryToDestination(String category, String destination){
         return this.categories.get(category).get(destination);
+    }
+    
+    public HashMap<String, String> convertCategory(String category){
+        return this.categories.get(category);
     }
     
     
