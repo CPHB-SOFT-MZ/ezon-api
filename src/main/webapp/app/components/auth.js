@@ -1,6 +1,6 @@
 angular.module('myApp.security', [])
         .controller('AppLoginCtrl', function ($scope, $rootScope, $http, $window, $location, $uibModal, jwtHelper) {
-
+            
           $rootScope.$on('logOutEvent', function () {
             $scope.logout();
           });
@@ -35,10 +35,10 @@ angular.module('myApp.security', [])
 
           $scope.$on("HttpErrorEvent", function (event, res) {
             if (typeof res.data.error !== "undefined" && res.data.error.message) {
-              $scope.openErrorModal(res.data.error.message);
+              console.log(res.data.error.message);
             }
             else {
-              $scope.openErrorModal("Unknown error during http request");
+              console.log("HttpErrorEvent");
             }
           });
 
@@ -141,6 +141,6 @@ function clearUserDetails($scope) {
 
 
 
-
+        
 
 
