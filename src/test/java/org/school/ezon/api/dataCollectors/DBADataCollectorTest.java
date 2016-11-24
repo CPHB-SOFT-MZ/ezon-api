@@ -28,7 +28,7 @@ public class DBADataCollectorTest {
     @Test
     public void testGetProductsFromCategory() {
         System.out.println("Test that we get a list that is not empty from DBA with a given category");
-        String category = "1";
+        String category = "cars";
         DataFormatter df = Mockito.mock(DataFormatter.class);
         DBADataCollector instance = new DBADataCollector(df);
         List<Product> products = new ArrayList();
@@ -60,7 +60,7 @@ public class DBADataCollectorTest {
     @Test
     public void testGetProductsBySearchAndCategory() {
         System.out.println("Test that we get a list that is not empty from DBA with category and search word");
-        String category = "1";
+        String category = "cars";
         String searchString = "audi";
         DataFormatter df = Mockito.mock(DataFormatter.class);
         DBADataCollector instance = new DBADataCollector(df);
