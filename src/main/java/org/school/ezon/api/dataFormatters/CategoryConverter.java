@@ -6,6 +6,7 @@
 package org.school.ezon.api.dataFormatters;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -71,6 +72,15 @@ public class CategoryConverter {
         return categories.get(category);
     }
     
-    
+    public static String convertFromValue(String id, String site){
+        String key = "";
+        for(Map.Entry<String, HashMap<String, String>> entry : categories.entrySet()){
+            if(entry.getValue().containsValue(id) && entry.getValue().containsKey(site)){
+                key = entry.getKey();
+                break;
+            }
+        }
+        return key;
+    }
     
 }
