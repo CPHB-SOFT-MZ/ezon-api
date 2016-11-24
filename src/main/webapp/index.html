@@ -5,47 +5,46 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html ng-app="myApp">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="windows-1252">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="app/app.css">   
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="app/app.css">
 
-        <!-- In production use:
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-        -->
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
-        <script src='bower_components/angular-animate/angular-animate.min.js'></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-        <script src="app/app.js"></script>
-        <script src="app/view1/view1.js"></script>
-        <script src="app/components/auth.js"></script>
-        <script src="app/components/filters.js"></script>
-        <script src="app/components/directives.js"></script>
-        <script src="app/components/factories.js"></script>
-        <script src="app/components/services.js"></script>
-    </head>
-    <body>
-        <div>Demo Page</div>
-        <div ng-controller="AppLoginCtrl">
-            <div ng-view></div>
-        </div>
-        <div ng-controller=""></div>
-        <script type="text/ng-template" id="errorModal.html">
-            <div class="modal-header">
-            <h3 class="modal-title">Error!</h3>
-            </div>
-            <div class="modal-body">
-            <p>{{error}}</p>
-            </div>
-            <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()" autofocus>OK</button>
-            </div>
-        </script>
-    </body>
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+    <script src='bower_components/angular-animate/angular-animate.min.js'></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/view1/view1.js"></script>
+    <script src="app/components/auth.js"></script>
+    <script src="app/components/filters.js"></script>
+    <script src="app/components/directives.js"></script>
+    <script src="app/components/factories.js"></script>
+    <script src="app/components/services.js"></script>
+</head>
+<body>
+<div ng-controller="AppLoginCtrl">
+    <div ng-view></div>
+</div>
+<div ng-controller=""></div>
+<script type="text/ng-template" id="errorModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Error!</h3>
+    </div>
+    <div class="modal-body">
+        <p>{{error}}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()" autofocus>OK</button>
+    </div>
+</script>
+</body>
 </html>

@@ -1,25 +1,46 @@
 <div class="container">
-    <button ng-click="getInfo()">Press me</button>
-    <div>
-        <table class="table">
-            <tr>
-                <td>Image</td>
-                <td>Title</td>
-                <td>Link</td>
-                <td>Des</td>
-                <td>Price</td>
-                <td>Site</td>
-                <td>Category</td>
-            </tr>
-            <tr ng-repeat="product in data">
-                <td><img src="{{product.thumbnailImage}}" alt=""></td>
-                <td>{{product.title}}</td>
-                <td><a href="{{product.url}}">Buy Here!</a></td>
-                <td>{{product.description}}</td>
-                <td>{{product.price}} kr</td>
-                <td>{{product.site}}</td>
-                <td>{{product.category}}</td>
-            </tr>
-        </table>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <form autocomplete="off">
+                    <div class="page-header">
+                        <h1>eZon searcher</h1>
+                    </div>
+                    <div class="col-md-6 col-md-offset-1">
+                        <input ng-model="searchText" class="form-control" type="text" placeholder="search" required>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-control" ng-model="category">
+                            <option value="undefined">Select Category</option>
+                            <option value="cars">Cars & Stuff</option>
+                            <option value="books">Book Stuff</option>
+                            <option value="hobby">Hobby Stuff</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="btn btn-primary" ng-click="getResults(searchText, category)"
+                               value="Search"/>
+                    </div>
+                </form>
+            </div>
+            <div class="row" ng-repeat="p in data">
+                <div class="col-md-2">
+                    <img src="{{p.thumbnailImage}}" class="image-responsive"/>
+                </div>
+                <div class="col-md-3">
+                    <p>{{p.category}}</p>
+                    <h5>{{p.title}}</h5>
+                </div>
+                <div class="col-md-3">
+                    <p>{{p.description}}</p>
+                </div>
+                <div class="col-md-2">
+                    <p>{{p.site}}</p>
+                </div>
+                <div class="col-md-2">
+                    <a href="{{p.url}}" class="btn btn-success btn-block"><< {{p.price}} dkk >></a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
