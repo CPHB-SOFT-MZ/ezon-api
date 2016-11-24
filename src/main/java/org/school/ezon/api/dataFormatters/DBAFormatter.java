@@ -29,7 +29,6 @@ public class DBAFormatter implements DataFormatter {
 //    }
     @Override
     public List<Product> formatProducts(String jsonFormat) {
-
         List<Product> products = new ArrayList();
 
         JsonArray jsonArr = new JsonParser()
@@ -54,12 +53,11 @@ public class DBAFormatter implements DataFormatter {
                         .getAsJsonObject().get("href").getAsString();
             }
 
-            int price = jsonAd.get("price").getAsInt();
+            float price = jsonAd.get("price").getAsInt();
 
             Product product = new Product(title, description, price, adLink, "dba", thumbnail);
             products.add(product);
         }
-
         return products;
     }
 

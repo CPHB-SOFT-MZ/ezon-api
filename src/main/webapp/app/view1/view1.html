@@ -1,0 +1,25 @@
+<div class="container">
+    <button ng-click="getInfo()">Press me</button>
+    <div>
+        <table class="table">
+            <tr>
+                <td>Image</td>
+                <td>Title</td>
+                <td>Link</td>
+                <td>Des</td>
+                <td>Price</td>
+                <td>Site</td>
+                <td>Category</td>
+            </tr>
+            <tr ng-repeat="product in data">
+                <td><img src="{{product.thumbnailImage}}" alt=""></td>
+                <td>{{product.title}}</td>
+                <td><a href="{{product.url}}">Buy Here!</a></td>
+                <td>{{product.description}}</td>
+                <td>{{product.price}} kr</td>
+                <td>{{product.site}}</td>
+                <td>{{product.category}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
