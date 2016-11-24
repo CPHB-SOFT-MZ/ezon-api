@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class CategoryConverter {
     private static HashMap<String, HashMap<String, String>> categories;
     
-    public void populateCategories(){
+    public static void populateCategories(){
         categories = new HashMap();
         categories.put("cars", new HashMap());
         categories.get("cars").put("dba", "1");
@@ -57,7 +57,7 @@ public class CategoryConverter {
     }
     
     
-    public String convertCategoryToDestination(String category, String destination){
+    public static String convertCategoryToDestination(String category, String destination){
         if(categories == null){
             populateCategories();
         }
