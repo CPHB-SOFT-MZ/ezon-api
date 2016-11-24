@@ -66,4 +66,14 @@ public class CategoryConverterTest {
         assertEquals(expResult, result);
     }
     
+    @Test
+    public void testReverseCategory(){
+        System.out.println("Reversed mofo");
+        String expRes = "cars";
+        
+        String result = CategoryConverter.convertFromValue("1", "dba");
+        
+        assertEquals(expRes, result);
+    }
+    
 }
