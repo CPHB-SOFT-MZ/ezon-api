@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.school.ezon.api.dataCollectors.DBADataCollector;
 import org.school.ezon.api.dataCollectors.DataCollector;
+import org.school.ezon.api.dataFormatters.DBAFormatter;
 import org.school.ezon.api.pojo.Product;
 
 /**
@@ -26,7 +27,7 @@ import org.school.ezon.api.pojo.Product;
 @Path("products")
 public class ProductsEndpoint {
     
-    DataCollector data = new DBADataCollector();
+    DataCollector data = new DBADataCollector(new DBAFormatter());
 
     @Context
     private UriInfo context;

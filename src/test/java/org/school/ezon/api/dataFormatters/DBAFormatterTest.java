@@ -38,7 +38,7 @@ public class DBAFormatterTest {
     @Before
     public void setUp() {
         dbaFormatter = new DBAFormatter();
-        dbaDataCollector = new DBADataCollector();
+        dbaDataCollector = new DBADataCollector(dbaFormatter);
     }
 
     @After
@@ -51,7 +51,7 @@ public class DBAFormatterTest {
     @Test
     public void testFormatProducts() {
 
-        List<Product> products = dbaDataCollector.getProductsBySearchAndCategory("1", "audi");
+        List<Product> products = dbaDataCollector.getProductsBySearchAndCategory("cars", "audi");
 
         assertTrue(products.size() > 1);
 

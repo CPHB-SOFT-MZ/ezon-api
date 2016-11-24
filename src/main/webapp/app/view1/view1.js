@@ -13,7 +13,7 @@ angular.module('myApp.view1', ['ngRoute'])
                 $scope.msgFromService = InfoService.getInfo();
                 $scope.getInfo = function () {
                     $http({
-                        url: 'http://localhost:8084/api/api/products/1/Mac',
+                        url: 'http://localhost:8084/api/api/products/cars/Audi',
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {
