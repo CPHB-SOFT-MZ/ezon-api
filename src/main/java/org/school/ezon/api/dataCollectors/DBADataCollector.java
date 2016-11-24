@@ -42,7 +42,7 @@ public class DBADataCollector implements DataCollector {
         DataFormatter dataFormatter = new DBAFormatter();
 
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("https://api.dba.dk/api/v2/ads/cassearch?q=" + searchString + "&cla=" + category);
+        WebTarget target = client.target("https://api.dba.dk/api/v2/ads/cassearch?q=" + searchString + "&cat=" + category);
 
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
                 .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
