@@ -19,9 +19,10 @@ public class Product {
     private String site;
     private String thumbnailImage;
 
-    public Product(String title, String description, float price, String url, String site, String thumbnailImage) {
+    public Product(String title, String description, String category, float price, String url, String site, String thumbnailImage) {
         this.title = title;
         this.description = description;
+        this.category = category;
         this.price = price;
         this.url = url;
         this.site = site;
