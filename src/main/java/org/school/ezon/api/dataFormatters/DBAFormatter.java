@@ -49,12 +49,13 @@ public class DBAFormatter implements DataFormatter {
 
             String adLink = jsonAd.getAsJsonObject("ad-url").get("href").getAsString();
 
-            String category = jsonAd.getAsJsonObject("classification")
+            String category
+                    = jsonAd.getAsJsonObject("classification")
                     .getAsJsonObject("category")
                     .getAsJsonObject("section")
                     .getAsJsonObject("sectiongroup")
                     .get("id").getAsString();
-            //CategoryConverter.
+            category = CategoryConverter.convertFromValue(category, "dba");
 
             String description = jsonAd.get("description").getAsString();
 

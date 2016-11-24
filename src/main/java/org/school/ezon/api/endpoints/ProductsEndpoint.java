@@ -5,7 +5,6 @@
  */
 package org.school.ezon.api.endpoints;
 
-import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -17,7 +16,6 @@ import javax.ws.rs.core.Response;
 import org.school.ezon.api.dataCollectors.DBADataCollector;
 import org.school.ezon.api.dataCollectors.DataCollector;
 import org.school.ezon.api.dataFormatters.DBAFormatter;
-import org.school.ezon.api.pojo.Product;
 
 /**
  * REST Web Service
