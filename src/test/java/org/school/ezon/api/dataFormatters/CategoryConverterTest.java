@@ -69,9 +69,9 @@ public class CategoryConverterTest {
     @Test
     public void testReverseCategory(){
         System.out.println("Reversed mofo");
-        String expRes = "cars";
+        String expRes = "hobby";
         
-        String result = CategoryConverter.convertFromValue("1", "dba");
+        String result = CategoryConverter.convertFromValue("36", "dba");
         
         assertEquals(expRes, result);
     }

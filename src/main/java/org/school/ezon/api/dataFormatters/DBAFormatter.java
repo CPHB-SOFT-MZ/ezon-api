@@ -53,10 +53,9 @@ public class DBAFormatter implements DataFormatter {
                     = jsonAd.getAsJsonObject("classification")
                     .getAsJsonObject("category")
                     .getAsJsonObject("section")
-                    .getAsJsonObject("sectiongroup")
                     .get("id").getAsString();
-            category = CategoryConverter.convertFromValue(category, "dba");
 
+            category = CategoryConverter.convertFromValue(category, "dba");
             String description = jsonAd.get("description").getAsString();
 
             String thumbnail = "";
