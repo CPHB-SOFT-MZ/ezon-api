@@ -14,4 +14,4 @@ target
 
 nb-configuration.xml
 /nbproject/
-/src/main/java/org/school/ezon/api/APIKeys.java
+src/main/java/org/school/ezon/api/APIKeys.java
