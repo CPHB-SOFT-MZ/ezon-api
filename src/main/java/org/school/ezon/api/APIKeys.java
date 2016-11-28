@@ -15,7 +15,7 @@ public class APIKeys {
     }
     
     public static String AmazonKey(){
-        return "";
+        return "2222";
     }
     
     public static String EbayKey(){
