@@ -23,7 +23,7 @@ angular.module('myApp.view1', ['ngRoute'])
                         console.log($scope.newUser.userEmail);
                         console.log($scope.newUser.password);
                     $http({
-                        url: 'http://localhost:8084/api/api/Authenticate/' + $scope.newUser.userEmail + $scope.newUser.password,
+                        url: 'http://localhost:8084/api/api/Authenticate/' + $scope.newUser.userEmail + '/' + $scope.newUser.password,
                         method: 'POST'
                     })
                             .success(function (data, status, headers, config) {
@@ -31,6 +31,7 @@ angular.module('myApp.view1', ['ngRoute'])
                                 console.log(data);
                             })
                             .error(function (data, status, headers, config) {
+                                console.log(status);
                                 console.log("Dosnt work");
                             });
                 };

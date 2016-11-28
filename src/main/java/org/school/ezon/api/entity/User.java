@@ -22,6 +22,9 @@ public class User implements Serializable {
     private String email;
     private String password;
     private List<String> searches;
+    
+    public User(){
+    }
 
     public User(String email, String password) {
         this.email = email;

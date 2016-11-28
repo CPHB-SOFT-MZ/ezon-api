@@ -8,6 +8,7 @@ package org.school.ezon.api.facade;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import org.school.ezon.api.Exceptions.UserExistException;
 import org.school.ezon.api.entity.User;
@@ -16,8 +17,8 @@ import org.school.ezon.api.entity.User;
  *
  * @author philliphbrink
  */
-public class UserFacade implements Facade{
-    
+public class UserFacade implements Facade {
+
     EntityManagerFactory emf;
 
     public UserFacade(EntityManagerFactory emf) {
@@ -32,16 +33,16 @@ public class UserFacade implements Facade{
     public User createUser(String email, String password) throws UserExistException {
         EntityManager em = getEntityManager();
         try {
-           User user = new User(email, password);
-           em.getTransaction().begin();
-           em.persist(user);
-           em.getTransaction().commit();
-           return user;
+            User user = new User(email, password);
+            em.getTransaction().begin();
+            em.persist(user);
+            em.getTransaction().commit();
+            return user;
         } catch (EntityExistsException e) {
             throw new UserExistException("The user already exists, please use another email");
         } finally {
-          em.close();
+            em.close();
         }
     }
-    
+
 }
