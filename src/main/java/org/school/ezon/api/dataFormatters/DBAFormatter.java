@@ -41,6 +41,10 @@ public class DBAFormatter implements DataFormatter {
                 .parse(jsonFormat).getAsJsonObject()
                 .get("ads").getAsJsonArray();
 
+        if (jsonArr == null) {
+            return products;
+        }
+
         for (JsonElement e : jsonArr) {
 
             JsonObject jsonAd = e.getAsJsonObject();
@@ -69,7 +73,6 @@ public class DBAFormatter implements DataFormatter {
             float price = jsonAd.get("price").getAsInt();
 
             Product product = new Product(title, description, category, price, adLink, "dba", thumbnail);
-
             products.add(product);
         }
 
