@@ -51,7 +51,7 @@ public class DBAFormatterTest {
     @Test
     public void testFormatProducts() {
 
-        List<Product> products = dbaDataCollector.getProductsBySearchAndCategory("cars", "audi");
+        List<Product> products = dbaDataCollector.getProductsBySearchAndCategory("1", "audi");
 
         assertTrue(products.size() > 1);
 

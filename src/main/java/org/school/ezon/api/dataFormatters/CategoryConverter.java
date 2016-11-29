@@ -19,7 +19,7 @@ public class CategoryConverter {
     public static void populateCategories() {
         categories = new HashMap();
         categories.put("vehiclesandaccess", new HashMap());
-        categories.get("vehicles").put("dba", new String[]{"1", "30", "8", "20", "11", "46"});
+        categories.get("vehiclesandaccess").put("dba", new String[]{"1", "30", "8", "20", "11", "46"});
         //categories.get("cars").put("amazon", new String[] {"248878031"});
 
         categories.put("estate", new HashMap());
@@ -30,7 +30,7 @@ public class CategoryConverter {
         categories.get("homeaccess").put("dba", new String[]{"26"});
         categories.get("homeaccess").put("ebay", new String[]{"11700", "870"});
 
-        categories.put("elecgtronics", new HashMap());
+        categories.put("electronics", new HashMap());
         categories.get("electronics").put("dba", new String[]{"2", "31", "10"});
         categories.get("electronics").put("ebay", new String[]{"625", "15032", "58058", "293", "11232", "1249"});
 
@@ -48,7 +48,7 @@ public class CategoryConverter {
 
         categories.put("sport", new HashMap());
         categories.get("sport").put("dba", new String[]{"4"});
-        categories.get("sports").put("ebay", new String[]{"888", "64482"});
+        categories.get("sport").put("ebay", new String[]{"888", "64482"});
 
         categories.put("hobby", new HashMap());
         categories.get("hobby").put("dba", new String[]{"36", "25"});
@@ -88,13 +88,13 @@ public class CategoryConverter {
         return categories.get(category).get(destination);
     }
 
-    public HashMap<String, String[]> convertCategory(String category) {
-        if (categories == null) {
-            populateCategories();
-        }
-
-        return categories.get(category);
-    }
+//    public HashMap<String, String[]> convertCategory(String category) {
+//        if (categories == null) {
+//            populateCategories();
+//        }
+//
+//        return categories.get(category);
+//    }
 
     public static String convertFromValue(String id, String site) {
         if (categories == null) {
@@ -105,13 +105,17 @@ public class CategoryConverter {
         for (Map.Entry<String, HashMap<String, String[]>> entry : categories.entrySet()) {
 
             for (Map.Entry<String, String[]> entry1 : entry.getValue().entrySet()) {
-                String[] ids = entry1.getValue();
 
-                for (String curId : ids) {
+                if (entry1.getKey().equals(site)) {
 
-                    if (curId.equals(id) && entry.getValue().containsKey(site)) {
-                        key = entry.getKey();
-                        break;
+                    String[] ids = entry1.getValue();
+
+                    for (String curId : ids) {
+
+                        if (curId.equals(id)) {
+                            key = entry.getKey();
+                            break;
+                        }
                     }
                 }
             }
