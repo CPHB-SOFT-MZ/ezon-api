@@ -6,7 +6,7 @@
 package org.school.ezon.api.facade;
 
 import org.school.ezon.api.Exceptions.UserExistException;
-import org.school.ezon.api.entity.User;
+import org.school.ezon.api.entity.Users;
 
 /**
  *
@@ -14,5 +14,5 @@ import org.school.ezon.api.entity.User;
  */
 public interface Facade {
     
-    public User createUser(String email, String pasword) throws UserExistException;
+    public Users createUser(String email, String pasword) throws UserExistException;
 }

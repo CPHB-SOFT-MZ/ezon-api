@@ -16,17 +16,17 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author philliphbrink
  */
 @Entity
-public class User implements Serializable {
+public class Users implements Serializable {
 
     @Id
     private String email;
     private String password;
     private List<String> searches;
     
-    public User(){
+    public Users(){
     }
 
-    public User(String email, String password) {
+    public Users(String email, String password) {
         this.email = email;
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }

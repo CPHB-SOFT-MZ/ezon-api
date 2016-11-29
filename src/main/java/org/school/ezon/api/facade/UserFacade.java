@@ -11,7 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import org.school.ezon.api.Exceptions.UserExistException;
-import org.school.ezon.api.entity.User;
+import org.school.ezon.api.entity.Users;
 
 /**
  *
@@ -30,10 +30,10 @@ public class UserFacade implements Facade {
     }
 
     @Override
-    public User createUser(String email, String password) throws UserExistException {
+    public Users createUser(String email, String password) throws UserExistException {
         EntityManager em = getEntityManager();
         try {
-            User user = new User(email, password);
+            Users user = new Users(email, password);
             em.getTransaction().begin();
             em.persist(user);
             em.getTransaction().commit();
