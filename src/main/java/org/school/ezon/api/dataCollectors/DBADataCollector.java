@@ -22,23 +22,23 @@ import org.school.ezon.api.pojo.Product;
 public class DBADataCollector implements DataCollector {
 
     private final DataFormatter dataFormatter;
-    
-    public DBADataCollector(DataFormatter dataFormatter){
+
+    public DBADataCollector(DataFormatter dataFormatter) {
         this.dataFormatter = dataFormatter;
     }
-    
+
     /**
      * Returns a list of products given a specific category from DBA
-     * @param category
-     * @return 
+     *
+     * @param categoryId
+     * @return
      */
     @Override
-    public List<Product> getProductsFromCategory(String category) {
+    public List<Product> getProductsFromCategory(String categoryId) {
+
         Client client = ClientBuilder.newClient();
-        String catId = CategoryConverter.convertCategoryToDestination(category, "dba");
-        
-        WebTarget target = client.target("https://api.dba.dk/api/v2/ads/cassearch?sec=" + catId);
-        
+        WebTarget target = client.target("https://api.dba.dk/api/v2/ads/cassearch?sec=" + categoryId);
+
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
                 .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
                 .get(String.class));
@@ -46,30 +46,35 @@ public class DBADataCollector implements DataCollector {
 
     /**
      * Returns a list of products given a specific search string from DBA
+     *
      * @param searchString
-     * @return 
+     * @return
      */
     @Override
     public List<Product> getProductsBySearch(String searchString) {
+
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("https://api.dba.dk/api/v2/ads/cassearch?q=" + searchString);
+
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
                 .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
                 .get(String.class));
     }
 
     /**
-     * This method takes a category - number, searchString - String and makes a connection to DBA Api and retruns a list of products.
-     * @param category
+     * This method takes a category - number, searchString - String and makes a
+     * connection to DBA Api and retruns a list of products.
+     *
+     * @param categoryId
      * @param searchString
-     * @return The method returns a list of products. If category is not a number i will throw Exception.
+     * @return The method returns a list of products. If category is not a
+     * number i will throw Exception.
      */
     @Override
-    public List<Product> getProductsBySearchAndCategory(String category, String searchString) {
+    public List<Product> getProductsBySearchAndCategory(String categoryId, String searchString) {
 
         Client client = ClientBuilder.newClient();
-        String catId = CategoryConverter.convertCategoryToDestination(category, "dba");
-        WebTarget target = client.target("https://api.dba.dk/api/v2/ads/cassearch?q=" + searchString + "&sec=" + catId);
+        WebTarget target = client.target("https://api.dba.dk/api/v2/ads/cassearch?q=" + searchString + "&sec=" + categoryId);
 
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
                 .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")

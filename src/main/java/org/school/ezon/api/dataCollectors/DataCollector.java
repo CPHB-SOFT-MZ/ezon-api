@@ -13,7 +13,10 @@ import org.school.ezon.api.pojo.Product;
  * @author Mikkel
  */
 public interface DataCollector {
-    List<Product> getProductsFromCategory(String category);
+
+    List<Product> getProductsFromCategory(String categoryId);
+
     List<Product> getProductsBySearch(String searchString);
-    List<Product> getProductsBySearchAndCategory(String category, String searchString);
+
+    List<Product> getProductsBySearchAndCategory(String categoryId, String searchString);
 }
