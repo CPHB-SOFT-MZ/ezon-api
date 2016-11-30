@@ -65,11 +65,13 @@ public class CollectorControllerTest {
     @Test
     public void testGetProductsBySearch() {
         System.out.println("getProductsBySearch");
+        
         String searchString = "audi";
         List<Product> products = new ArrayList();
         DataCollector dataCollector = mock(DataCollector.class);
         List<DataCollector> dataCollectors = new ArrayList();
         dataCollectors.add(dataCollector);
+        
         CollectorController instance = new CollectorController(dataCollectors);
         when(dataCollector.getProductsBySearch(searchString)).thenReturn(products);
         List<Product> result = instance.getProductsBySearch(searchString);

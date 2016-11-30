@@ -22,7 +22,12 @@ public class StateInit {
         DataFormatter dbaFormatter = new DBAFormatter();
         List<DataCollector> dcs = new ArrayList();
         DataCollector dbaCollector = new DBADataCollector(dbaFormatter);
+        
+        //TODO: Instantiate the correct implementation of the formatter and collector for ebay here
+        DataFormatter ebayFormatter;
+        DataCollector ebayCollector;
         dcs.add(dbaCollector);
+        //dcs.add(ebayCollector);
         ICollectorController cc = new CollectorController(dcs);
         return new Controller(cc);
     }
