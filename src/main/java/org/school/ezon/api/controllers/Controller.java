@@ -5,8 +5,11 @@
  */
 package org.school.ezon.api.controllers;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import org.school.ezon.api.pojo.Product;
+import org.school.ezon.api.sorters.SortByPrice;
 
 /**
  *
@@ -30,7 +33,9 @@ public class Controller {
      * @return 
      */
     public List<Product> getProductsBySearch(String searchString) {
-        return collectorControl.getProductsBySearch(searchString);
+        List<Product> products = collectorControl.getProductsBySearch(searchString);
+        Collections.sort(products, new SortByPrice());
+        return products;
     }
     
     /**
