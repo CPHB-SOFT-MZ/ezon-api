@@ -38,8 +38,8 @@ public class CollectorController implements ICollectorController{
     public List<Product> getProductsBySearch(String searchString) {
         List<Product> products = new ArrayList();
         List<Callable<List<Product>>> callables = new ArrayList();
-
         List<Future<List<Product>>> futures = new ArrayList();
+        
         for(DataCollector dc : dataCollectors){
             callables.add(new CollectorRunnerSearchByString(dc, searchString));
         }
