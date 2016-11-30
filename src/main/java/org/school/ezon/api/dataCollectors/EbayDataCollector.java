@@ -10,6 +10,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import org.school.ezon.api.APIKeys;
 import org.school.ezon.api.dataFormatters.CategoryConverter;
 import org.school.ezon.api.dataFormatters.DataFormatter;
 import org.school.ezon.api.pojo.Product;
@@ -32,10 +33,11 @@ public class EbayDataCollector implements DataCollector {
         Client client = ClientBuilder.newClient();
         String catId = CategoryConverter.convertCategoryToDestination(category, "ebay");
 
-        WebTarget target = client.target("https://api.ebay.com/buy/browse/v1/item_group/" + catId);
+        WebTarget target = client.target("https://api.ebay.com/buy/browse/v1/item_summary/search?category=" + catId + "&q=&sort=price");
 
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
-                .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
+                .header("Content-Type", "application/json")
+                .header("Authorization", APIKeys.EbayKey())
                 .get(String.class));
 
     }
@@ -43,9 +45,10 @@ public class EbayDataCollector implements DataCollector {
     @Override
     public List<Product> getProductsBySearch(String searchString) {
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target();
+        WebTarget target = client.target("https://api.ebay.com/buy/browse/v1/item_summary/search?q=" + searchString + "&sort=price");
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
-                .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
+                .header("Content-Type", "application/json")
+                .header("Authorization", APIKeys.EbayKey())
                 .get(String.class));
     }
 
@@ -53,10 +56,11 @@ public class EbayDataCollector implements DataCollector {
     public List<Product> getProductsBySearchAndCategory(String category, String searchString) {
         Client client = ClientBuilder.newClient();
         String catId = CategoryConverter.convertCategoryToDestination(category, "ebay");
-        WebTarget target = client.target();
+        WebTarget target = client.target("https://api.ebay.com/buy/browse/v1/item_summary/search?category=" + catId + "&q=" + searchString + "&sort=price");
 
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
-                .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
+                .header("Content-Type", "application/json")
+                .header("Authorization", APIKeys.EbayKey())
                 .get(String.class));
     }
 
