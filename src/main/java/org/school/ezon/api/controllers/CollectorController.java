@@ -14,10 +14,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.school.ezon.api.dataCollectors.DBADataCollector;
 import org.school.ezon.api.dataCollectors.DataCollector;
-import org.school.ezon.api.dataFormatters.DBAFormatter;
-import org.school.ezon.api.dataFormatters.DataFormatter;
 import org.school.ezon.api.pojo.Product;
 
 /**
@@ -25,8 +22,8 @@ import org.school.ezon.api.pojo.Product;
  * @author Mikkel
  */
 public class CollectorController implements ICollectorController{
-    private ExecutorService threadPool = Executors.newCachedThreadPool();
-    private List<DataCollector> dataCollectors;
+    private final ExecutorService threadPool = Executors.newCachedThreadPool();
+    private final List<DataCollector> dataCollectors;
     
     public CollectorController(List<DataCollector> dataCollectors){
         this.dataCollectors = dataCollectors;
@@ -44,8 +41,7 @@ public class CollectorController implements ICollectorController{
 
         List<Future<List<Product>>> futures = new ArrayList();
         for(DataCollector dc : dataCollectors){
-            callables.add(new CollectorRunnerSearchByString(this, dc, searchString));
-            //futures.add(threadPool.submit(new CollectorRunnerSearchByString(this, dc, searchString)));
+            callables.add(new CollectorRunnerSearchByString(dc, searchString));
         }
         
         try {

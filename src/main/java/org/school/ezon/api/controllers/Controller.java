@@ -14,7 +14,7 @@ import org.school.ezon.api.pojo.Product;
  */
 public class Controller {
     
-    private CollectorController collectorControl;
+    private final CollectorController collectorControl;
     
     public Controller(CollectorController collectorControl){
         this.collectorControl = collectorControl;
