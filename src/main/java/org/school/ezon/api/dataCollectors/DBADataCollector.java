@@ -11,6 +11,7 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriBuilder;
 import org.school.ezon.api.dataFormatters.CategoryConverter;
 import org.school.ezon.api.dataFormatters.DataFormatter;
 import org.school.ezon.api.pojo.Product;
@@ -52,7 +53,7 @@ public class DBADataCollector implements DataCollector {
     @Override
     public List<Product> getProductsBySearch(String searchString) {
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("https://api.dba.dk/api/v2/ads/cassearch?q=" + searchString);
+        WebTarget target = client.target("https://api.dba.dk/api/v2/ads/cassearch?ps=20&q=" + searchString + "&sort=price-asc");
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
                 .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
                 .get(String.class));

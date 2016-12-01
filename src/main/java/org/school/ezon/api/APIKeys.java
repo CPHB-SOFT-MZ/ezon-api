@@ -29,9 +29,9 @@ public class APIKeys {
     public static String DBAKey() {
         return "087157d7-84d5-4f2b-1d02-08d282f6c857";
     }
-
-    public static String AmazonKey() {
-        return "";
+    
+    public static String AmazonKey(){
+        return "2222";
     }
 
     public static String EbayKey() {
