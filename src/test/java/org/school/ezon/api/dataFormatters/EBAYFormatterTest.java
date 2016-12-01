@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.school.ezon.api.dataCollectors.EbayDataCollector;
 import org.school.ezon.api.pojo.Product;
 
 /**
@@ -19,6 +20,9 @@ import org.school.ezon.api.pojo.Product;
  * @author danie
  */
 public class EBAYFormatterTest {
+
+    EBAYFormatter ebayFormatter;
+    EbayDataCollector ebayCollector;
 
     public EBAYFormatterTest() {
     }
@@ -33,6 +37,8 @@ public class EBAYFormatterTest {
 
     @Before
     public void setUp() {
+        ebayFormatter = new EBAYFormatter();
+        ebayCollector = new EbayDataCollector(ebayFormatter);
     }
 
     @After
@@ -44,14 +50,26 @@ public class EBAYFormatterTest {
      */
     @Test
     public void testFormatProducts() {
-        System.out.println("formatProducts");
-        String jsonFormat = "";
-        EBAYFormatter instance = new EBAYFormatter();
-        List<Product> expResult = null;
-        List<Product> result = instance.formatProducts(jsonFormat);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        List<Product> products = ebayCollector.getProductsBySearchAndCategory("1", "ball");
+
+        assertTrue(products.size() > 1);
+
+        for (Product p : products) {
+            assertNotNull(p.getTitle());
+            assertNotNull(p.getDescription());
+            assertNotNull(p.getThumbnailImage());
+            assertNotNull(p.getSite());
+            assertNotNull(p.getPrice());
+            assertNotNull(p.getUrl());
+        }
+    }
+
+    /**
+     * Test of main method, of class EBAYFormatter.
+     */
+    @Test
+    public void testMain() {
     }
 
 }

@@ -11,10 +11,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
+import org.school.ezon.api.dataCollectors.EbayDataCollector;
 import org.school.ezon.api.pojo.Product;
 
 /**
@@ -27,10 +24,12 @@ public class EBAYFormatter implements DataFormatter {
     public List<Product> formatProducts(String jsonFormat) {
         List<Product> ads = new ArrayList();
         float rate = 2;
-                //CurrencyConverter.getExchangeRate();
+        //CurrencyConverter.getExchangeRate();
 
         JsonArray jsonArr = new JsonParser().parse(jsonFormat).getAsJsonObject()
-                .getAsJsonArray("itemSummaries");
+                .getAsJsonArray("findItemsAdvancedResponse").get(0)
+                .getAsJsonObject().getAsJsonArray("searchResult").get(0)
+                .getAsJsonObject().getAsJsonArray("item");
 
         if (jsonArr == null) {
             return ads;
@@ -71,19 +70,5 @@ public class EBAYFormatter implements DataFormatter {
         }
 
         return ads;
-    }
-
-    public static void main(String[] args) {
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=DanielWi-3Semeste-PRD-c45f64428-bc9a0454&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=10&keywords=tolkien&descriptionSearch=true&categoryId=1");
-
-        List<Product> products = new EBAYFormatter().formatProducts(target.request(MediaType.APPLICATION_JSON)
-                .get(String.class));
-
-        for (Product p : products) {
-            System.out.println(p.getPrice());
-            System.out.println(p.getTitle());
-        }
-
     }
 }
