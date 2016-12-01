@@ -21,41 +21,42 @@ import org.school.ezon.api.pojo.Product;
  *
  * @author Mikkel
  */
-public class CollectorController implements ICollectorController{
+public class CollectorController implements ICollectorController {
+
     private final ExecutorService threadPool = Executors.newCachedThreadPool();
     private final List<DataCollector> dataCollectors;
-    
-    public CollectorController(List<DataCollector> dataCollectors){
+
+    public CollectorController(List<DataCollector> dataCollectors) {
         this.dataCollectors = dataCollectors;
     }
-    
+
     @Override
     public List<Product> getProductsBySearchAndCategory(String category, String searchString) {
         List<Product> products = new ArrayList();
         List<Callable<List<Product>>> callables = new ArrayList();
         List<Future<List<Product>>> futures = new ArrayList();
-        
-        for(DataCollector dc : dataCollectors){
+
+        for (DataCollector dc : dataCollectors) {
             callables.add(new CollectorRunnerSearchByStringAndCategory(dc, searchString, category));
         }
-        
+
         try {
             futures = threadPool.invokeAll(callables);
         } catch (InterruptedException ex) {
             Logger.getLogger(CollectorController.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
-        try{
-            for(Future<List<Product>> future : futures){
+
+        try {
+            for (Future<List<Product>> future : futures) {
                 products.addAll(future.get());
             }
-        } catch(ExecutionException ex){
+        } catch (ExecutionException ex) {
             System.out.println(ex.getStackTrace().toString());
         } catch (InterruptedException ex) {
             System.err.println(ex.getStackTrace().toString());
         }
-        
-        threadPool.shutdown();
+
+       // threadPool.shutdown();
         return products;
     }
 
@@ -64,28 +65,28 @@ public class CollectorController implements ICollectorController{
         List<Product> products = new ArrayList();
         List<Callable<List<Product>>> callables = new ArrayList();
         List<Future<List<Product>>> futures = new ArrayList();
-        
-        for(DataCollector dc : dataCollectors){
+
+        for (DataCollector dc : dataCollectors) {
             callables.add(new CollectorRunnerSearchByString(dc, searchString));
         }
-        
+
         try {
             futures = threadPool.invokeAll(callables);
         } catch (InterruptedException ex) {
             Logger.getLogger(CollectorController.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
-        try{
-            for(Future<List<Product>> future : futures){
+
+        try {
+            for (Future<List<Product>> future : futures) {
                 products.addAll(future.get());
             }
-        } catch(ExecutionException ex){
+        } catch (ExecutionException ex) {
             System.out.println(ex.getStackTrace());
         } catch (InterruptedException ex) {
             System.err.println(ex.getStackTrace());
         }
-        
-        threadPool.shutdown();
+
+        //threadPool.shutdown();
         return products;
     }
 
@@ -94,29 +95,29 @@ public class CollectorController implements ICollectorController{
         List<Product> products = new ArrayList();
         List<Callable<List<Product>>> callables = new ArrayList();
         List<Future<List<Product>>> futures = new ArrayList();
-        
-        for(DataCollector dc : dataCollectors){
+
+        for (DataCollector dc : dataCollectors) {
             callables.add(new CollectorRunnerSearchByCategory(dc, category));
         }
-        
+
         try {
             futures = threadPool.invokeAll(callables);
         } catch (InterruptedException ex) {
             Logger.getLogger(CollectorController.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
-        try{
-            for(Future<List<Product>> future : futures){
+
+        try {
+            for (Future<List<Product>> future : futures) {
                 products.addAll(future.get());
             }
-        } catch(ExecutionException ex){
+        } catch (ExecutionException ex) {
             System.out.println(ex.getStackTrace().toString());
         } catch (InterruptedException ex) {
             System.err.println(ex.getStackTrace().toString());
         }
-        
-        threadPool.shutdown();
+
+        //threadPool.shutdown();
         return products;
     }
-    
+
 }

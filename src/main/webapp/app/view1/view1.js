@@ -20,8 +20,8 @@ angular.module('myApp.view1', ['ngRoute'])
                 };
 
                 $scope.createUser = function () {
-                        console.log($scope.newUser.userEmail);
-                        console.log($scope.newUser.password);
+                    console.log($scope.newUser.userEmail);
+                    console.log($scope.newUser.password);
                     $http({
                         url: 'http://localhost:8084/api/api/Authenticate/' + $scope.newUser.userEmail + '/' + $scope.newUser.password,
                         method: 'POST'
@@ -47,7 +47,7 @@ angular.module('myApp.view1', ['ngRoute'])
                     }
 
                     $http({
-                        url: 'http://localhost:8084/api/api/products/' + category + searchText,
+                        url: 'http://localhost:8084/api/api/products/' + searchText,
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {

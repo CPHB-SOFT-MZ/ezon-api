@@ -31,9 +31,7 @@ public class EbayDataCollector implements DataCollector {
 
         Client client = ClientBuilder.newClient();
 
-        WebTarget target = client.target("http://svcs.ebay.com/services/search/FindingService/"
-                + "v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME="
-                + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&descriptionSearch=true&categoryId=" + category);
+        WebTarget target = client.target("http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=" + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&descriptionSearch=true&categoryId=" + category);
 
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
                 .get(String.class));
@@ -43,10 +41,7 @@ public class EbayDataCollector implements DataCollector {
     @Override
     public List<Product> getProductsBySearch(String searchString) {
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("http://svcs.ebay.com/services/search/FindingService/"
-                + "v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME="
-                + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&"
-                + "keywords=" + searchString);
+        WebTarget target = client.target("http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME=" + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&keywords=" + searchString);
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
                 .get(String.class));
     }

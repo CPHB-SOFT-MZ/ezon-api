@@ -26,7 +26,7 @@ import org.school.ezon.api.dataFormatters.DBAFormatter;
  */
 @Path("products")
 public class ProductsEndpoint {
-    
+
     DataCollector data = new DBADataCollector(new DBAFormatter());
     Controller ctrl = StateInit.getController();
 
@@ -50,9 +50,9 @@ public class ProductsEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsBySearch(@PathParam("searchString") String search) {
         //TODO return proper representation object
-         return Response.ok(ctrl.getProductsBySearch(search)).build();
+        return Response.ok(ctrl.getProductsBySearch(search)).build();
     }
-    
+
     /**
      * Retrieves representation of an instance of
      * org.school.ezon.api.endpoints.ProductsEndpoint
@@ -66,7 +66,7 @@ public class ProductsEndpoint {
         //TODO return proper representation object
         return Response.ok(ctrl.getProductsFromCategory(category)).build();
     }
-    
+
     /**
      * Retrieves representation of an instance of
      * org.school.ezon.api.endpoints.ProductsEndpoint

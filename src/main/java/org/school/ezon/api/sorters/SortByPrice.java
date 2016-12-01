@@ -18,10 +18,10 @@ public class SortByPrice implements Comparator {
     public int compare(Object o1, Object o2) {
         Product pr1 = (Product) o1;
         Product pr2 = (Product) o2;
-        if (Integer.valueOf(pr1.getPrice()) < Integer.valueOf(pr2.getPrice())) {
+        if (Float.valueOf(pr1.getPrice()) < Float.valueOf(pr2.getPrice())) {
             return -1;
         }
-        if (Integer.valueOf(pr1.getPrice()) > Integer.valueOf(pr2.getPrice())) {
+        if (Float.valueOf(pr1.getPrice()) > Float.valueOf(pr2.getPrice())) {
             return 1;
         }
         return 0;
