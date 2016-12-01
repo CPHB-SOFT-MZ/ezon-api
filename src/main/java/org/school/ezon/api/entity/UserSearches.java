@@ -7,9 +7,8 @@ package org.school.ezon.api.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -18,10 +17,14 @@ import javax.persistence.Id;
 @Entity
 public class UserSearches implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String searchWord;
+    private int count;
+    @ManyToOne
+    private Users user;
+
+    public UserSearches() {
+    }
 
     public String getSearchWord() {
         return searchWord;
@@ -31,29 +34,20 @@ public class UserSearches implements Serializable {
         this.searchWord = searchWord;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (searchWord != null ? searchWord.hashCode() : 0);
-        return hash;
+    public int getCount() {
+        return count;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the searchWord fields are not set
-        if (!(object instanceof UserSearches)) {
-            return false;
-        }
-        UserSearches other = (UserSearches) object;
-        if ((this.searchWord == null && other.searchWord != null) || (this.searchWord != null && !this.searchWord.equals(other.searchWord))) {
-            return false;
-        }
-        return true;
+    public void setCount(int count) {
+        this.count = count;
     }
 
-    @Override
-    public String toString() {
-        return "org.school.ezon.api.entity.UserSearches[ id=" + searchWord + " ]";
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
     
 }

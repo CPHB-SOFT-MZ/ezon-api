@@ -16,9 +16,13 @@ import javax.persistence.Id;
 @Entity
 public class AllSearches implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     private String searchWord;
+    private int count;
+    
+    public AllSearches(){
+        
+    }
 
     public String getSearchWord() {
         return searchWord;
@@ -28,29 +32,14 @@ public class AllSearches implements Serializable {
         this.searchWord = searchWord;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (searchWord != null ? searchWord.hashCode() : 0);
-        return hash;
+    public int getCount() {
+        return count;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the searchWord fields are not set
-        if (!(object instanceof AllSearches)) {
-            return false;
-        }
-        AllSearches other = (AllSearches) object;
-        if ((this.searchWord == null && other.searchWord != null) || (this.searchWord != null && !this.searchWord.equals(other.searchWord))) {
-            return false;
-        }
-        return true;
+    public void setCount(int count) {
+        this.count = count;
     }
-
-    @Override
-    public String toString() {
-        return "org.school.ezon.api.entity.AllSearches[ id=" + searchWord + " ]";
-    }
+    
+    
     
 }
