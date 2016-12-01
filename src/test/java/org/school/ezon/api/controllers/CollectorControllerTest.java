@@ -48,15 +48,18 @@ public class CollectorControllerTest {
     @Test
     public void testGetProductsBySearchAndCategory() {
         System.out.println("getProductsBySearchAndCategory");
-        String category = "";
-        String searchString = "";
-        CollectorController instance = null;
-        List<Product> expResult = null;
-        //List<Product> result = instance.getProductsBySearchAndCategory(category, searchString);
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        assertTrue(true);
-        //fail("The test case is a prototype.");
+        
+        String searchString = "audi";
+        String category = "biler";
+        List<Product> products = new ArrayList();
+        DataCollector dataCollector = mock(DataCollector.class);
+        List<DataCollector> dataCollectors = new ArrayList();
+        dataCollectors.add(dataCollector);
+        
+        CollectorController instance = new CollectorController(dataCollectors);
+        when(dataCollector.getProductsBySearchAndCategory(category, searchString)).thenReturn(products);
+        List<Product> result = instance.getProductsBySearchAndCategory(category, searchString);
+        assertEquals(products, result);
     }
 
     /**
@@ -83,15 +86,18 @@ public class CollectorControllerTest {
      */
     @Test
     public void testGetProductsFromCategory() {
-        System.out.println("getProductsFromCategory");
-        String category = "";
-        CollectorController instance = null;
-        List<Product> expResult = null;
-        //List<Product> result = instance.getProductsFromCategory(category);
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-        assertTrue(true);
+        System.out.println("getProductsBySearchAndCategory");
+        
+        String category = "biler";
+        List<Product> products = new ArrayList();
+        DataCollector dataCollector = mock(DataCollector.class);
+        List<DataCollector> dataCollectors = new ArrayList();
+        dataCollectors.add(dataCollector);
+        
+        CollectorController instance = new CollectorController(dataCollectors);
+        when(dataCollector.getProductsFromCategory(category)).thenReturn(products);
+        List<Product> result = instance.getProductsFromCategory(category);
+        assertEquals(products, result);
     }
     
 }

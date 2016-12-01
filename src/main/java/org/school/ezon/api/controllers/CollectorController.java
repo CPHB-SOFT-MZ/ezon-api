@@ -31,7 +31,32 @@ public class CollectorController implements ICollectorController{
     
     @Override
     public List<Product> getProductsBySearchAndCategory(String category, String searchString) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Product> products = new ArrayList();
+        List<Callable<List<Product>>> callables = new ArrayList();
+        List<Future<List<Product>>> futures = new ArrayList();
+        
+        for(DataCollector dc : dataCollectors){
+            callables.add(new CollectorRunnerSearchByStringAndCategory(dc, searchString, category));
+        }
+        
+        try {
+            futures = threadPool.invokeAll(callables);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CollectorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+        try{
+            for(Future<List<Product>> future : futures){
+                products.addAll(future.get());
+            }
+        } catch(ExecutionException ex){
+            System.out.println(ex.getStackTrace().toString());
+        } catch (InterruptedException ex) {
+            System.err.println(ex.getStackTrace().toString());
+        }
+        
+        threadPool.shutdown();
+        return products;
     }
 
     @Override
@@ -66,7 +91,32 @@ public class CollectorController implements ICollectorController{
 
     @Override
     public List<Product> getProductsFromCategory(String category) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Product> products = new ArrayList();
+        List<Callable<List<Product>>> callables = new ArrayList();
+        List<Future<List<Product>>> futures = new ArrayList();
+        
+        for(DataCollector dc : dataCollectors){
+            callables.add(new CollectorRunnerSearchByCategory(dc, category));
+        }
+        
+        try {
+            futures = threadPool.invokeAll(callables);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CollectorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+        try{
+            for(Future<List<Product>> future : futures){
+                products.addAll(future.get());
+            }
+        } catch(ExecutionException ex){
+            System.out.println(ex.getStackTrace().toString());
+        } catch (InterruptedException ex) {
+            System.err.println(ex.getStackTrace().toString());
+        }
+        
+        threadPool.shutdown();
+        return products;
     }
     
 }
