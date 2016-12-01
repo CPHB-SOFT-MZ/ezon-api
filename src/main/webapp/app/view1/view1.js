@@ -8,12 +8,46 @@ angular.module('myApp.view1', ['ngRoute'])
                 });
             }])
 
-        .controller('View1Ctrl', ["InfoFactory", "InfoService", '$scope','$http', function (InfoFactory, InfoService, $scope, $http) {
+        .controller('View1Ctrl', ["InfoFactory", "InfoService", '$scope', '$http', function (InfoFactory, InfoService, $scope, $http) {
+
                 $scope.msgFromFactory = InfoFactory.getInfo();
                 $scope.msgFromService = InfoService.getInfo();
-                $scope.getInfo = function () {
+                $scope.category = "undefined";
+
+                $scope.newUser = {
+                    userEmail: '',
+                    password: ''
+                };
+
+                $scope.createUser = function () {
+                        console.log($scope.newUser.userEmail);
+                        console.log($scope.newUser.password);
                     $http({
-                        url: 'http://localhost:8084/api/api/products/cars/Audi',
+                        url: 'http://localhost:8084/api/api/Authenticate/' + $scope.newUser.userEmail + '/' + $scope.newUser.password,
+                        method: 'POST'
+                    })
+                            .success(function (data, status, headers, config) {
+                                console.log("Works");
+                                console.log(data);
+                            })
+                            .error(function (data, status, headers, config) {
+                                console.log(status);
+                                console.log("Dosnt work");
+                            });
+                };
+
+                $scope.getResults = function (searchText, category) {
+                    console.log(searchText);
+                    console.log(category);
+
+                    if (angular.isUndefined(category) || category === "undefined") {
+                        category = "";
+                    } else {
+                        category = category + "/";
+                    }
+
+                    $http({
+                        url: 'http://localhost:8084/api/api/products/' + category + searchText,
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {
@@ -28,28 +62,7 @@ angular.module('myApp.view1', ['ngRoute'])
 //                    productsFactory.getInfo().then(function (response) {
 //                        $scope.data = response.data;
 //                    });
-                }
-
-            }])
-
-        .factory('productsFactory', ['$http', function ($http) {
-                var getInfo = function () {
-                    return $http({
-                        url: 'http://localhost:8084/api/products',
-                        method: 'GET'
-                    })
-                            .success(function (data, status, headers, config) {
-                                console.log(data);
-                                if (data.error) {
-                                    alert("Error: " + data.message);
-                                }
-                                return data;
-                            })
-                            .error(function (data, status, headers, config) {
-                                return console.log("Error " + data);
-                            });
                 };
-                return {
-                    getInfo: getInfo
-                };
+
             }]);
+

@@ -62,6 +62,7 @@ public class DBAFormatterTest {
             assertNotNull(p.getSite());
             assertNotNull(p.getPrice());
             assertNotNull(p.getUrl());
+            assertNotNull(p.getCategory());
         }
     }
 

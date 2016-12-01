@@ -27,6 +27,12 @@ public class DBAFormatter implements DataFormatter {
 //        }
 //        return instance;
 //    }
+    /**
+     *
+     * @param jsonFormat
+     * @return If the input is valid, the method will return a List of Products,
+     * else it will throw an exception.
+     */
     @Override
     public List<Product> formatProducts(String jsonFormat) {
         List<Product> products = new ArrayList();
@@ -43,6 +49,13 @@ public class DBAFormatter implements DataFormatter {
 
             String adLink = jsonAd.getAsJsonObject("ad-url").get("href").getAsString();
 
+            String category
+                    = jsonAd.getAsJsonObject("classification")
+                    .getAsJsonObject("category")
+                    .getAsJsonObject("section")
+                    .get("id").getAsString();
+
+            category = CategoryConverter.convertFromValue(category, "dba");
             String description = jsonAd.get("description").getAsString();
 
             String thumbnail = "";
@@ -55,9 +68,11 @@ public class DBAFormatter implements DataFormatter {
 
             float price = jsonAd.get("price").getAsInt();
 
-            Product product = new Product(title, description, price, adLink, "dba", thumbnail);
+            Product product = new Product(title, description, category, price, adLink, "dba", thumbnail);
+
             products.add(product);
         }
+
         return products;
     }
 

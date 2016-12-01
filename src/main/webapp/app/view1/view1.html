@@ -1,25 +1,82 @@
 <div class="container">
-    <button ng-click="getInfo()">Press me</button>
-    <div>
-        <table class="table">
-            <tr>
-                <td>Image</td>
-                <td>Title</td>
-                <td>Link</td>
-                <td>Des</td>
-                <td>Price</td>
-                <td>Site</td>
-                <td>Category</td>
-            </tr>
-            <tr ng-repeat="product in data">
-                <td><img src="{{product.thumbnailImage}}" alt=""></td>
-                <td>{{product.title}}</td>
-                <td><a href="{{product.url}}">Buy Here!</a></td>
-                <td>{{product.description}}</td>
-                <td>{{product.price}} kr</td>
-                <td>{{product.site}}</td>
-                <td>{{product.category}}</td>
-            </tr>
-        </table>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <form autocomplete="off">
+                    <div style="margin-bottom: 60px" class="page-header">
+                        <h1 class="text-center">eZon searcher</h1>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Sign Up</button>
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Sign Up Form</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" placeholder="E-mail" ng-model="newUser.userEmail">
+                                        <input type="text" placeholder="Password" ng-model="newUser.password">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input ng-click="createUser()"  type="submit" value="Create User" class="btn btn-default">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 60px" class="col-md-6 col-md-offset-2">
+                        <input ng-model="searchText" class="form-control" type="text" placeholder="search">
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-control" ng-model="category">
+                            <option value="undefined">Select Category</option>
+                            <option value="cars">Cars & Stuff</option>
+                            <option value="books">Book Stuff</option>
+                            <option value="hobby">Hobby Stuff</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="btn btn-primary" ng-click="getResults(searchText, category)"
+                               value="Search"/>
+                    </div>
+                </form>
+            </div>
+            <div style="border-bottom: 1px solid #e7e7e7" class="row">
+                <div class="col-md-2">
+                    <h4>Image</h4>
+                </div>
+                <div class="col-md-3">
+                    <h4>Title</h4>
+                </div>
+                <div class="col-md-5">
+                    <h4>Description</h4>
+                </div>
+                <div class="col-md-2">
+                    <h4>Price</h4>
+                </div>
+            </div>
+            <div style="margin-top: 20px; border-bottom: 1px solid #e7e7e7" class="row" ng-repeat="p in data| product">
+                <div class="col-md-2">
+                    <img src="{{p.thumbnailImage}}" class="image-responsive"/>
+                </div>
+                <div class="col-md-3">
+                    <p>{{p.category}}</p>
+                    <h4>{{p.title}}</h4>
+                    <p>{{p.site}}</p>
+                </div>
+                <div class="col-md-5">
+                    <p>{{p.excerpt}}</p>
+                    <!--<p>{{p.description}}</p>-->
+                </div>
+                <div class="col-md-2">
+                    <a href="{{p.url}}" class="btn btn-success btn-block"><< {{p.price}} dkk >></a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
