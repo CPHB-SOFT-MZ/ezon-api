@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import org.school.ezon.api.dataCollectors.DBADataCollector;
 import org.school.ezon.api.dataCollectors.DataCollector;
+import org.school.ezon.api.dataCollectors.EbayDataCollector;
 import org.school.ezon.api.dataFormatters.DBAFormatter;
 import org.school.ezon.api.dataFormatters.DataFormatter;
+import org.school.ezon.api.dataFormatters.EBAYFormatter;
 
 /**
  *
@@ -30,10 +32,10 @@ public class StateInit {
             dbaCollector = new DBADataCollector(dbaFormatter);
 
             //TODO: Instantiate the correct implementation of the formatter and collector for ebay here
-            ebayFormatter = null;
-            ebayCollector= null;
+            ebayFormatter = new EBAYFormatter();
+            ebayCollector= new EbayDataCollector(ebayFormatter);
             dcs.add(dbaCollector);
-            //dcs.add(ebayCollector);
+            dcs.add(ebayCollector);
             cc = new CollectorController(dcs);
             controller = new Controller(cc);
         }
