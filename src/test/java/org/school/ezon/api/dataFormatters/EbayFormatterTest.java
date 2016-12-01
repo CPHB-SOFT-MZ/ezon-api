@@ -21,7 +21,7 @@ import org.school.ezon.api.pojo.Product;
  */
 public class EbayFormatterTest {
 
-    EBAYFormatter ebayFormatter;
+    EbayFormatter ebayFormatter;
     EbayDataCollector ebayCollector;
 
     public EbayFormatterTest() {
@@ -37,7 +37,7 @@ public class EbayFormatterTest {
 
     @Before
     public void setUp() {
-        ebayFormatter = new EBAYFormatter();
+        ebayFormatter = new EbayFormatter();
         ebayCollector = new EbayDataCollector(ebayFormatter);
     }
 
@@ -46,7 +46,7 @@ public class EbayFormatterTest {
     }
 
     /**
-     * Test of formatProducts method, of class EBAYFormatter.
+     * Test of formatProducts method, of class EbayFormatter.
      */
     @Test
     public void testFormatProducts() {
@@ -66,7 +66,7 @@ public class EbayFormatterTest {
     }
 
     /**
-     * Test of main method, of class EBAYFormatter.
+     * Test of main method, of class EbayFormatter.
      */
     @Test
     public void testMain() {

@@ -12,7 +12,7 @@ import org.school.ezon.api.dataCollectors.DataCollector;
 import org.school.ezon.api.dataCollectors.EbayDataCollector;
 import org.school.ezon.api.dataFormatters.DBAFormatter;
 import org.school.ezon.api.dataFormatters.DataFormatter;
-import org.school.ezon.api.dataFormatters.EBAYFormatter;
+import org.school.ezon.api.dataFormatters.EbayFormatter;
 
 /**
  *
@@ -32,7 +32,7 @@ public class StateInit {
             dbaCollector = new DBADataCollector(dbaFormatter);
 
             //TODO: Instantiate the correct implementation of the formatter and collector for ebay here
-            ebayFormatter = new EBAYFormatter();
+            ebayFormatter = new EbayFormatter();
             ebayCollector= new EbayDataCollector(ebayFormatter);
             dcs.add(dbaCollector);
             dcs.add(ebayCollector);

@@ -14,7 +14,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.mockito.Mockito;
-import org.school.ezon.api.dataCollectors.EbayDataCollector;
 import org.school.ezon.api.dataFormatters.DataFormatter;
 import org.school.ezon.api.pojo.Product;
 
@@ -77,7 +76,7 @@ public class EbayDataCollectorTest {
 
     /**
      * Test of getProductsBySearchAndCategory method, of class
-     * EbayDataCollector.
+ EbayDataCollector.
      */
     @Test
     public void testGetProductsBySearchAndCategory() {

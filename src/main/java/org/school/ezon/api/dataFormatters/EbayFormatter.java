@@ -18,7 +18,7 @@ import org.school.ezon.api.pojo.Product;
  *
  * @author danie
  */
-public class EBAYFormatter implements DataFormatter {
+public class EbayFormatter implements DataFormatter {
 
     @Override
     public List<Product> formatProducts(String jsonFormat) {
