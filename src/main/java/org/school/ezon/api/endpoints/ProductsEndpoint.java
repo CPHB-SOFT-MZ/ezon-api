@@ -27,7 +27,6 @@ import org.school.ezon.api.dataFormatters.DBAFormatter;
 @Path("products")
 public class ProductsEndpoint {
     
-    DataCollector data = new DBADataCollector(new DBAFormatter());
     Controller ctrl = StateInit.getController();
 
     @Context
