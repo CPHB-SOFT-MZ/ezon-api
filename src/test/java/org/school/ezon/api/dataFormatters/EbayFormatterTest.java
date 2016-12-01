@@ -19,12 +19,12 @@ import org.school.ezon.api.pojo.Product;
  *
  * @author danie
  */
-public class EBAYFormatterTest {
+public class EbayFormatterTest {
 
     EBAYFormatter ebayFormatter;
     EbayDataCollector ebayCollector;
 
-    public EBAYFormatterTest() {
+    public EbayFormatterTest() {
     }
 
     @BeforeClass
