@@ -12,19 +12,19 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.school.ezon.api.dataCollectors.DBADataCollector;
+import org.school.ezon.api.dataCollectors.EbayDataCollector;
 import org.school.ezon.api.pojo.Product;
 
 /**
  *
  * @author danie
  */
-public class DBAFormatterTest {
+public class EbayFormatterTest {
 
-    DBAFormatter dbaFormatter;
-    DBADataCollector dbaDataCollector;
+    EBAYFormatter ebayFormatter;
+    EbayDataCollector ebayCollector;
 
-    public DBAFormatterTest() {
+    public EbayFormatterTest() {
     }
 
     @BeforeClass
@@ -37,8 +37,8 @@ public class DBAFormatterTest {
 
     @Before
     public void setUp() {
-        dbaFormatter = new DBAFormatter();
-        dbaDataCollector = new DBADataCollector(dbaFormatter);
+        ebayFormatter = new EBAYFormatter();
+        ebayCollector = new EbayDataCollector(ebayFormatter);
     }
 
     @After
@@ -46,12 +46,12 @@ public class DBAFormatterTest {
     }
 
     /**
-     * Test of formatProducts method, of class DBAFormatter.
+     * Test of formatProducts method, of class EBAYFormatter.
      */
     @Test
     public void testFormatProducts() {
 
-        List<Product> products = dbaDataCollector.getProductsBySearchAndCategory("1", "audi");
+        List<Product> products = ebayCollector.getProductsBySearchAndCategory("1", "ball");
 
         assertTrue(products.size() > 1);
 
@@ -65,8 +65,11 @@ public class DBAFormatterTest {
         }
     }
 
-    public static void main(String[] args) {
-
+    /**
+     * Test of main method, of class EBAYFormatter.
+     */
+    @Test
+    public void testMain() {
     }
 
 }

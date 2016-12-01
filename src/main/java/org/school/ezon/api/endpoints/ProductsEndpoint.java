@@ -13,6 +13,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.school.ezon.api.controllers.Controller;
+import org.school.ezon.api.controllers.StateInit;
 import org.school.ezon.api.dataCollectors.DBADataCollector;
 import org.school.ezon.api.dataCollectors.DataCollector;
 import org.school.ezon.api.dataFormatters.DBAFormatter;
@@ -26,6 +28,7 @@ import org.school.ezon.api.dataFormatters.DBAFormatter;
 public class ProductsEndpoint {
     
     DataCollector data = new DBADataCollector(new DBAFormatter());
+    Controller ctrl = StateInit.getController();
 
     @Context
     private UriInfo context;
@@ -47,7 +50,7 @@ public class ProductsEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsBySearch(@PathParam("searchString") String search) {
         //TODO return proper representation object
-        return Response.ok(data.getProductsBySearch(search)).build();
+         return Response.ok(ctrl.getProductsBySearch(search)).build();
     }
     
     /**
@@ -61,7 +64,7 @@ public class ProductsEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsByCategory(@PathParam("category") String category) {
         //TODO return proper representation object
-        return Response.ok(data.getProductsFromCategory(category)).build();
+        return Response.ok(ctrl.getProductsFromCategory(category)).build();
     }
     
     /**
@@ -75,6 +78,6 @@ public class ProductsEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsBySearchAndCategory(@PathParam("searchString") String search, @PathParam("category") String category) {
         //TODO return proper representation object
-        return Response.ok(data.getProductsBySearchAndCategory(category, search)).build();
+        return Response.ok(ctrl.getProductsBySearchAndCategory(category, search)).build();
     }
 }
