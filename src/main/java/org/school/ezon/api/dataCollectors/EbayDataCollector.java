@@ -38,8 +38,6 @@ public class EbayDataCollector implements DataCollector {
                 + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&descriptionSearch=true&categoryId=" + category);
 
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
-                .header("Content-Type", "application/json")
-                .header("Authorization", APIKeys.EbayKey())
                 .get(String.class));
 
     }
@@ -52,8 +50,6 @@ public class EbayDataCollector implements DataCollector {
                 + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&"
                 + "keywords=" + searchString);
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
-                .header("Content-Type", "application/json")
-                .header("Authorization", APIKeys.EbayKey())
                 .get(String.class));
     }
 
@@ -67,8 +63,6 @@ public class EbayDataCollector implements DataCollector {
                 + "keywords=" + searchString + "&descriptionSearch=true&categoryId=" + category);
 
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
-                .header("Content-Type", "application/json")
-                .header("Authorization", APIKeys.EbayKey())
                 .get(String.class));
     }
 
