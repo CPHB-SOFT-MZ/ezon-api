@@ -38,7 +38,6 @@ public class APIKeys {
     }
 
     public static String EbayKey() {
-        GetEbayKey GEK = new GetEbayKey();
-        return GEK.getKey();
+        return "DanielWi-3Semeste-PRD-c45f64428-bc9a0454";
     }
 }

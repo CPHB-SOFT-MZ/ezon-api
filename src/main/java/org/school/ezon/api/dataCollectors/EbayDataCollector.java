@@ -33,7 +33,9 @@ public class EbayDataCollector implements DataCollector {
         Client client = ClientBuilder.newClient();
         String catId = CategoryConverter.convertCategoryToDestination(category, "ebay");
 
-        WebTarget target = client.target("https://api.ebay.com/buy/browse/v1/item_summary/search?category=" + catId + "&q=&sort=price");
+        WebTarget target = client.target("http://svcs.ebay.com/services/search/FindingService/"
+                + "v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME="
+                + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&descriptionSearch=true&categoryId=" + category);
 
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
                 .header("Content-Type", "application/json")
@@ -45,7 +47,10 @@ public class EbayDataCollector implements DataCollector {
     @Override
     public List<Product> getProductsBySearch(String searchString) {
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("https://api.ebay.com/buy/browse/v1/item_summary/search?q=" + searchString + "&sort=price");
+        WebTarget target = client.target("http://svcs.ebay.com/services/search/FindingService/"
+                + "v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME="
+                + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&"
+                + "keywords=" + searchString);
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
                 .header("Content-Type", "application/json")
                 .header("Authorization", APIKeys.EbayKey())
@@ -56,7 +61,10 @@ public class EbayDataCollector implements DataCollector {
     public List<Product> getProductsBySearchAndCategory(String category, String searchString) {
         Client client = ClientBuilder.newClient();
         String catId = CategoryConverter.convertCategoryToDestination(category, "ebay");
-        WebTarget target = client.target("https://api.ebay.com/buy/browse/v1/item_summary/search?category=" + catId + "&q=" + searchString + "&sort=price");
+        WebTarget target = client.target("http://svcs.ebay.com/services/search/FindingService/"
+                + "v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME="
+                + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&"
+                + "keywords=" + searchString + "&descriptionSearch=true&categoryId=" + category);
 
         return dataFormatter.formatProducts(target.request(MediaType.APPLICATION_JSON)
                 .header("Content-Type", "application/json")
