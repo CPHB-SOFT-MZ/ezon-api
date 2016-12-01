@@ -50,8 +50,7 @@ public class ProductsEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsBySearch(@PathParam("searchString") String search) {
         //TODO return proper representation object
-        // return Response.ok(ctrl.METHOD).build();
-        return Response.ok(data.getProductsBySearch(search)).build();
+         return Response.ok(ctrl.getProductsBySearch(search)).build();
     }
     
     /**
@@ -65,8 +64,7 @@ public class ProductsEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsByCategory(@PathParam("category") String category) {
         //TODO return proper representation object
-        // return Response.ok(ctrl.METHOD).build();
-        return Response.ok(data.getProductsFromCategory(category)).build();
+        return Response.ok(ctrl.getProductsFromCategory(category)).build();
     }
     
     /**
@@ -80,7 +78,6 @@ public class ProductsEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsBySearchAndCategory(@PathParam("searchString") String search, @PathParam("category") String category) {
         //TODO return proper representation object
-        // return Response.ok(ctrl.METHOD).build();
-        return Response.ok(data.getProductsBySearchAndCategory(category, search)).build();
+        return Response.ok(ctrl.getProductsBySearchAndCategory(category, search)).build();
     }
 }
