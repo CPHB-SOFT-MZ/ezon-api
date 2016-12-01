@@ -6,9 +6,11 @@
 package org.school.ezon.api.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -21,7 +23,8 @@ public class Users implements Serializable {
     @Id
     private String email;
     private String password;
-    private List<String> searches;
+    @OneToMany(mappedBy = "user")
+    private List<UserSearches> userSearches = new ArrayList();
     
     public Users(){
     }
@@ -47,16 +50,16 @@ public class Users implements Serializable {
         this.password = password;
     }
 
-    public List<String> getSearches() {
-        return searches;
+    public List<UserSearches> getSearches() {
+        return userSearches;
     }
 
-    public void setSearches(List<String> searches) {
-        this.searches = searches;
+    public void setSearches(List<UserSearches> searches) {
+        this.userSearches = searches;
     }
 
-    public void addSearches(String search) {
-        searches.add(search);
+    public void addSearches(UserSearches search) {
+        userSearches.add(search);
     }
 
 }

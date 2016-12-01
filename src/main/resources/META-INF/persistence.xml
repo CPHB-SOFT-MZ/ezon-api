@@ -3,6 +3,8 @@
   <persistence-unit name="ezon" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>org.school.ezon.api.entity.Users</class>
+    <class>org.school.ezon.api.entity.AllSearches</class>
+    <class>org.school.ezon.api.entity.UserSearches</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ezondb?zeroDateTimeBehavior=convertToNull"/>
