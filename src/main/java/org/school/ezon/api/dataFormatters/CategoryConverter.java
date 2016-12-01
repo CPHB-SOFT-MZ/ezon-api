@@ -5,7 +5,9 @@
  */
 package org.school.ezon.api.dataFormatters;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,6 +17,7 @@ import java.util.Map;
 public class CategoryConverter {
 
     private static HashMap<String, HashMap<String, String[]>> categories;
+    private static List<String> eBayCatIds = Arrays.asList("10542", "11700", "870", "625", "15032", "58058", "293", "11232", "1249", "1281", "1305", "11450", "281", "888", "64482", "11116", "1", "14339", "260", "220", "11233", "619", "2984", "237", "267", "12576", "3252", "200081", "550", "45100", "172008", "26395", "99", "316");
 
     public static void populateCategories() {
         categories = new HashMap();
@@ -80,6 +83,10 @@ public class CategoryConverter {
         categories.get("other").put("ebay", new String[]{"200081", "550", "45100", "172008", "26395", "99", "316"});
     }
 
+    public static boolean isValidEbayCatId(String catId) {
+        return eBayCatIds.contains(catId);
+    }
+
     public static String[] convertCategoryToDestination(String category, String destination) {
         if (categories == null) {
             populateCategories();
@@ -95,33 +102,31 @@ public class CategoryConverter {
 //
 //        return categories.get(category);
 //    }
-
-    public static String convertFromValue(String id, String site) {
-        if (categories == null) {
-            populateCategories();
-        }
-
-        String key = "";
-        for (Map.Entry<String, HashMap<String, String[]>> entry : categories.entrySet()) {
-
-            for (Map.Entry<String, String[]> entry1 : entry.getValue().entrySet()) {
-
-                if (entry1.getKey().equals(site)) {
-
-                    String[] ids = entry1.getValue();
-
-                    for (String curId : ids) {
-
-                        if (curId.equals(id)) {
-                            key = entry.getKey();
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        return key;
-    }
-
+//    public static String convertFromValue(String id, String site) {
+//        if (categories == null) {
+//            populateCategories();
+//        }
+//
+//        String key = "";
+//        for (Map.Entry<String, HashMap<String, String[]>> entry : categories.entrySet()) {
+//
+//            for (Map.Entry<String, String[]> entry1 : entry.getValue().entrySet()) {
+//
+//                if (entry1.getKey().equals(site)) {
+//
+//                    String[] ids = entry1.getValue();
+//
+//                    for (String curId : ids) {
+//
+//                        if (curId.equals(id)) {
+//                            key = entry.getKey();
+//                            break;
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        return key;
+//    }
 }

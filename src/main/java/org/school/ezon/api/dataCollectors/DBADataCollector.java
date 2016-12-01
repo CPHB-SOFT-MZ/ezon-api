@@ -5,13 +5,11 @@
  */
 package org.school.ezon.api.dataCollectors;
 
-import java.io.IOException;
 import java.util.List;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-import org.school.ezon.api.dataFormatters.CategoryConverter;
 import org.school.ezon.api.dataFormatters.DataFormatter;
 import org.school.ezon.api.pojo.Product;
 

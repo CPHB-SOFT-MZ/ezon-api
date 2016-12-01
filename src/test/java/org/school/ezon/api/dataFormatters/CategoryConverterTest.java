@@ -62,20 +62,20 @@ public class CategoryConverterTest {
         assertArrayEquals(expResult, result);
     }
 
-    @Test
-    public void testReverseCategory() {
-        System.out.println("Reversed mofo");
-        String expRes = "hobby";
-
-        String result = CategoryConverter.convertFromValue("36", "dba");
-        String result1 = CategoryConverter.convertFromValue("25", "dba");
-        String result2 = CategoryConverter.convertFromValue("260", "ebay");
-        String result3 = CategoryConverter.convertFromValue("220", "ebay");
-
-        assertEquals(expRes, result);
-        assertEquals(expRes, result1);
-        assertEquals(expRes, result2);
-        assertEquals(expRes, result3);
-    }
+//    @Test
+//    public void testReverseCategory() {
+//        System.out.println("Reversed mofo");
+//        String expRes = "hobby";
+//
+//        String result = CategoryConverter.convertFromValue("36", "dba");
+//        String result1 = CategoryConverter.convertFromValue("25", "dba");
+//        String result2 = CategoryConverter.convertFromValue("260", "ebay");
+//        String result3 = CategoryConverter.convertFromValue("220", "ebay");
+//
+//        assertEquals(expRes, result);
+//        assertEquals(expRes, result1);
+//        assertEquals(expRes, result2);
+//        assertEquals(expRes, result3);
+//    }
 
 }

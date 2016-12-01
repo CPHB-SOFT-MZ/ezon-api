@@ -12,17 +12,17 @@ package org.school.ezon.api.pojo;
 public class Product {
 
     private String title;
-    private String category;
+    //private String category;
     private String description;
-    private float price;
+    private String price;
     private String url;
     private String site;
     private String thumbnailImage;
 
-    public Product(String title, String description, String category, float price, String url, String site, String thumbnailImage) {
+    public Product(String title, String description, String price, String url, String site, String thumbnailImage) {
         this.title = title;
         this.description = description;
-        this.category = category;
+        //this.category = category;
         this.price = price;
         this.url = url;
         this.site = site;
@@ -40,14 +40,13 @@ public class Product {
         this.title = title;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
+//    public String getCategory() {
+//        return category;
+//    }
+//
+//    public void setCategory(String category) {
+//        this.category = category;
+//    }
     public String getDescription() {
         return description;
     }
@@ -56,11 +55,11 @@ public class Product {
         this.description = description;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

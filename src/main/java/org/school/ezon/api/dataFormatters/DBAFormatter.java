@@ -53,13 +53,12 @@ public class DBAFormatter implements DataFormatter {
 
             String adLink = jsonAd.getAsJsonObject("ad-url").get("href").getAsString();
 
-            String category
-                    = jsonAd.getAsJsonObject("classification")
-                    .getAsJsonObject("category")
-                    .getAsJsonObject("section")
-                    .get("id").getAsString();
-
-            category = CategoryConverter.convertFromValue(category, "dba");
+//            String category
+//                    = jsonAd.getAsJsonObject("classification")
+//                    .getAsJsonObject("category")
+//                    .getAsJsonObject("section")
+//                    .get("id").getAsString();
+//            category = CategoryConverter.convertFromValue(category, "dba");
             String description = jsonAd.get("description").getAsString();
 
             String thumbnail = "";
@@ -70,9 +69,9 @@ public class DBAFormatter implements DataFormatter {
                         .getAsJsonObject().get("href").getAsString();
             }
 
-            float price = jsonAd.get("price").getAsInt();
+            String price = jsonAd.get("price").getAsString();
 
-            Product product = new Product(title, description, category, price, adLink, "dba", thumbnail);
+            Product product = new Product(title, description, price, adLink, "dba", thumbnail);
             products.add(product);
         }
 

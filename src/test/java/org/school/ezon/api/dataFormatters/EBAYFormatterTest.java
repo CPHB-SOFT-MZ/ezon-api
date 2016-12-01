@@ -19,22 +19,22 @@ import org.school.ezon.api.pojo.Product;
  * @author danie
  */
 public class EBAYFormatterTest {
-    
+
     public EBAYFormatterTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -53,5 +53,5 @@ public class EBAYFormatterTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }
