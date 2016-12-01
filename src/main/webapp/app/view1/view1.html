@@ -5,9 +5,32 @@
                 <form autocomplete="off">
                     <div style="margin-bottom: 60px" class="page-header">
                         <h1 class="text-center">eZon searcher</h1>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Sign Up</button>
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Sign Up Form</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" placeholder="E-mail" ng-model="newUser.userEmail">
+                                        <input type="text" placeholder="Password" ng-model="newUser.password">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input ng-click="createUser()"  type="submit" value="Create User" class="btn btn-default">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                     <div style="margin-bottom: 60px" class="col-md-6 col-md-offset-2">
-                        <input ng-model="searchText" class="form-control" type="text" placeholder="search" required>
+                        <input ng-model="searchText" class="form-control" type="text" placeholder="search">
                     </div>
                     <div class="col-md-2">
                         <select class="form-control" ng-model="category">
@@ -37,8 +60,12 @@
                     <h4>Price</h4>
                 </div>
             </div>
+<<<<<<< HEAD
             <div style="margin-top: 20px; border-bottom: 1px solid #e7e7e7" class="row"
                  ng-repeat="p in data | product">
+=======
+            <div style="margin-top: 20px; border-bottom: 1px solid #e7e7e7" class="row" ng-repeat="p in data| product">
+>>>>>>> 5eec5d94c5ec45379851a2ba2f9a4868f3a890be
                 <div class="col-md-2">
                     <img src="{{p.thumbnailImage}}" class="image-responsive"/>
                 </div>
