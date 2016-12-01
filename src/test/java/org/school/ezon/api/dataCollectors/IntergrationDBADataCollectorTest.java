@@ -26,7 +26,6 @@ public class IntergrationDBADataCollectorTest {
         String category = "1";
         given()
                 .contentType("application/json")
-                .header("Content-Type", "application/json")
                 .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
                 .pathParam("category", category)
                 .when()
@@ -44,7 +43,6 @@ public class IntergrationDBADataCollectorTest {
         String searchString = "audi";
         given()
                 .contentType("application/json")
-                .header("Content-Type", "application/json")
                 .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
                 .pathParam("searchString", searchString)
                 .when()
@@ -63,7 +61,6 @@ public class IntergrationDBADataCollectorTest {
         String searchString = "audi";
         given()
                 .contentType("application/json")
-                .header("Content-Type", "application/json")
                 .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
                 .pathParam("category", category)
                 .pathParam("searchString", searchString)

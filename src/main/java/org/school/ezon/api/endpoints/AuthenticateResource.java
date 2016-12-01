@@ -60,7 +60,6 @@ public class AuthenticateResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response signUp(@PathParam("userName") String email, @PathParam("password") String password) {
-        System.out.println("-----------------------------------api---------------------");
         try {
             return Response.ok(facade.createUser(email, password)).build();
         } catch (UserExistException ex) {

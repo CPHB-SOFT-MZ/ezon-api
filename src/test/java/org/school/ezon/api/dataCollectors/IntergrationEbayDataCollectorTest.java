@@ -5,17 +5,16 @@
  */
 package org.school.ezon.api.dataCollectors;
 
-import java.util.List;
+import static io.restassured.RestAssured.given;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import org.school.ezon.api.pojo.Product;
+import org.school.ezon.api.APIKeys;
 
 /**
  *
  * @author philliphbrink
  */
 public class IntergrationEbayDataCollectorTest {
-    
+
     public IntergrationEbayDataCollectorTest() {
     }
 
@@ -24,13 +23,16 @@ public class IntergrationEbayDataCollectorTest {
      */
     @Test
     public void testGetProductsFromCategory() {
-        System.out.println("getProductsFromCategory");
-        String category = "";
-        EbayDataCollector instance = null;
-        List<Product> expResult = null;
-        List<Product> result = instance.getProductsFromCategory(category);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        String category = "619";
+        given()
+                .contentType("application/json")
+                .pathParam("category", category)
+                .when()
+                .get("http://svcs.ebay.com/services/search/FindingService/"
+                        + "v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME="
+                        + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&descriptionSearch=true&categoryId={category}")
+                .then()
+                .statusCode(200);
     }
 
     /**
@@ -38,28 +40,38 @@ public class IntergrationEbayDataCollectorTest {
      */
     @Test
     public void testGetProductsBySearch() {
-        System.out.println("getProductsBySearch");
-        String searchString = "";
-        EbayDataCollector instance = null;
-        List<Product> expResult = null;
-        List<Product> result = instance.getProductsBySearch(searchString);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        String searchString = "piano";
+        given()
+                .contentType("application/json")
+                .pathParam("searchString", searchString)
+                .when()
+                .get("http://svcs.ebay.com/services/search/FindingService/"
+                        + "v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME="
+                        + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&"
+                        + "keywords={searchString}")
+                .then()
+                .statusCode(200);
     }
 
     /**
-     * Test of getProductsBySearchAndCategory method, of class EbayDataCollector.
+     * Test of getProductsBySearchAndCategory method, of class
+     * EbayDataCollector.
      */
     @Test
     public void testGetProductsBySearchAndCategory() {
-        System.out.println("getProductsBySearchAndCategory");
-        String category = "";
-        String searchString = "";
-        EbayDataCollector instance = null;
-        List<Product> expResult = null;
-        List<Product> result = instance.getProductsBySearchAndCategory(category, searchString);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        String category = "619";
+        String searchString = "piano";
+        given()
+                .contentType("application/json")
+                .pathParam("category", category)
+                .pathParam("searchString", searchString)
+                .when()
+                .get("http://svcs.ebay.com/services/search/FindingService/"
+                        + "v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.12.0&SECURITY-APPNAME="
+                        + APIKeys.EbayKey() + "&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&paginationInput.entriesPerPage=20&"
+                        + "keywords={searchString}&descriptionSearch=true&categoryId={category}")
+                .then()
+                .statusCode(200);
     }
-    
+
 }

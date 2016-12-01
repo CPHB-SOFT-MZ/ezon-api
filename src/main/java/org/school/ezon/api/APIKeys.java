@@ -32,13 +32,12 @@ public class APIKeys {
     public static String DBAKey() {
         return "087157d7-84d5-4f2b-1d02-08d282f6c857";
     }
-
-    public static String AmazonKey() {
-        return "";
+    
+    public static String AmazonKey(){
+        return "2222";
     }
 
     public static String EbayKey() {
-        GetEbayKey GEK = new GetEbayKey();
-        return GEK.getKey();
+        return "DanielWi-3Semeste-PRD-c45f64428-bc9a0454";
     }
 }
