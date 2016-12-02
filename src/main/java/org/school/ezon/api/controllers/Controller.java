@@ -7,6 +7,8 @@ package org.school.ezon.api.controllers;
 
 import java.util.Collections;
 import java.util.List;
+import org.school.ezon.api.Exceptions.UserExistException;
+import org.school.ezon.api.entity.Users;
 import org.school.ezon.api.facade.Facade;
 import org.school.ezon.api.pojo.Product;
 import org.school.ezon.api.sorters.SortByPrice;
@@ -42,7 +44,7 @@ public class Controller {
     }
     
     /**
-     * Not yet implemented
+     * Gets a list of products from ebay and DBA sorted by price from a keyword and a search string
      * @param category
      * @param searchString
      * @return 
@@ -51,4 +53,9 @@ public class Controller {
         facade.updateUnspecificSearch(searchString);
         return collectorControl.getProductsBySearchAndCategory(category, searchString);
     }
+    
+    public Users signUp(String email, String password) throws UserExistException{
+        return facade.createUser(email, password);
+    }
+    
 }

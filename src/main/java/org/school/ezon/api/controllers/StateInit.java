@@ -14,7 +14,6 @@ import org.school.ezon.api.dataFormatters.DBAFormatter;
 import org.school.ezon.api.dataFormatters.DataFormatter;
 import org.school.ezon.api.dataFormatters.EbayFormatter;
 import org.school.ezon.api.facade.Facade;
-import org.school.ezon.api.facade.UserFacade;
 import org.school.ezon.api.facade.UserFacadeFactory;
 
 /**
