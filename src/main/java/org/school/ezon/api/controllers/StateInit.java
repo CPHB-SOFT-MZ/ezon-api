@@ -13,6 +13,9 @@ import org.school.ezon.api.dataCollectors.EbayDataCollector;
 import org.school.ezon.api.dataFormatters.DBAFormatter;
 import org.school.ezon.api.dataFormatters.DataFormatter;
 import org.school.ezon.api.dataFormatters.EbayFormatter;
+import org.school.ezon.api.facade.Facade;
+import org.school.ezon.api.facade.UserFacade;
+import org.school.ezon.api.facade.UserFacadeFactory;
 
 /**
  *
@@ -25,6 +28,7 @@ public class StateInit {
     private static DataCollector ebayCollector;
     private static ICollectorController cc;
     private static Controller controller;
+    private static Facade facade;
     public static Controller getController(){
         if(controller == null){
             dbaFormatter = new DBAFormatter();
@@ -37,7 +41,8 @@ public class StateInit {
             dcs.add(dbaCollector);
             dcs.add(ebayCollector);
             cc = new CollectorController(dcs);
-            controller = new Controller(cc);
+            facade = UserFacadeFactory.getInstance();
+            controller = new Controller(cc, facade);
         }
         return controller;
     }
