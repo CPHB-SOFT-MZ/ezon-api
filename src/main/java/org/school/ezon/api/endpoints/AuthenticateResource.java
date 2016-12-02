@@ -61,6 +61,7 @@ public class AuthenticateResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response signUp(@PathParam("userName") String email, @PathParam("password") String password) {
         try {
+            // TODO: Change use from facade to a controller!
             return Response.ok(facade.createUser(email, password)).build();
         } catch (UserExistException ex) {
             return  Response.serverError().build();

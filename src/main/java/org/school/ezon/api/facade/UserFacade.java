@@ -11,6 +11,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 import org.school.ezon.api.Exceptions.UserExistException;
+import org.school.ezon.api.entity.AllSearches;
+import org.school.ezon.api.entity.UserSearches;
 import org.school.ezon.api.entity.Users;
 
 /**
@@ -43,6 +45,16 @@ public class UserFacade implements Facade {
         } finally {
             em.close();
         }
+    }
+
+    @Override
+    public UserSearches updateUserSearch(Users user, String keyword) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public AllSearches updateUnspecificSearch(String keyword) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
