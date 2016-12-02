@@ -9,7 +9,7 @@ package org.school.ezon.api.dataFormatters;
  *
  * @author Mikkel
  */
-public class KeywordKFormatter {
+public class KeywordFormatter {
     public static String format(String keyword){
         String lowercaseKeyword = keyword.toLowerCase();
         return lowercaseKeyword.trim().replaceAll("\\s+", " ");
