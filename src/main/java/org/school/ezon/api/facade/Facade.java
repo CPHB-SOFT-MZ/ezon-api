@@ -6,6 +6,8 @@
 package org.school.ezon.api.facade;
 
 import org.school.ezon.api.Exceptions.UserExistException;
+import org.school.ezon.api.entity.AllSearches;
+import org.school.ezon.api.entity.UserSearches;
 import org.school.ezon.api.entity.Users;
 
 /**
@@ -15,4 +17,6 @@ import org.school.ezon.api.entity.Users;
 public interface Facade {
     
     public Users createUser(String email, String pasword) throws UserExistException;
+    public UserSearches updateUserSearch(Users user, String keyword);
+    public AllSearches updateUnspecificSearch(String keyword);
 }
