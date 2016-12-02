@@ -8,9 +8,8 @@ package org.school.ezon.api.facade;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceException;
 import org.school.ezon.api.Exceptions.UserExistException;
+import org.school.ezon.api.dataFormatters.KeywordFormatter;
 import org.school.ezon.api.entity.AllSearches;
 import org.school.ezon.api.entity.UserSearches;
 import org.school.ezon.api.entity.Users;
@@ -54,7 +53,32 @@ public class UserFacade implements Facade {
 
     @Override
     public AllSearches updateUnspecificSearch(String keyword) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+        keyword = KeywordFormatter.format(keyword);
+        AllSearches as = new AllSearches();
+        as.setSearchWord(keyword);
+        as.setCount(1);
+        
+        AllSearches existingObject = findSearch(keyword);
+        
+            if(existingObject == null){
+                em.getTransaction().begin();
+                em.persist(as);
+                em.getTransaction().commit();
+                em.close();
+                return as;
+            }else{
+                em.getTransaction().begin();
+                existingObject.setCount(existingObject.getCount() + 1);
+                em.merge(existingObject);
+                em.close();
+                return existingObject;
+            }
+    }
+    
+    private AllSearches findSearch(String keyword){
+        EntityManager em = getEntityManager();
+        return em.find(AllSearches.class, keyword);
     }
 
 }

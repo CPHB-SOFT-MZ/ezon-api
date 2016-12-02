@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Mikkel
  */
-public class KeywordKFormatterTest {
+public class KeywordFormatterTest {
     
-    public KeywordKFormatterTest() {
+    public KeywordFormatterTest() {
     }
     
     @BeforeClass
@@ -38,14 +38,14 @@ public class KeywordKFormatterTest {
     }
 
     /**
-     * Test of format method, of class KeywordKFormatter.
+     * Test of format method, of class KeywordFormatter.
      */
     @Test
     public void testFormat() {
         System.out.println("format");
         String keyword = " hej jEg er En     stRing ";
         String expResult = "hej jeg er en string";
-        String result = KeywordKFormatter.format(keyword);
+        String result = KeywordFormatter.format(keyword);
         assertEquals(expResult, result);
     }
     

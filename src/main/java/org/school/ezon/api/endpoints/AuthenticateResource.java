@@ -16,6 +16,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.school.ezon.api.Exceptions.UserExistException;
+import org.school.ezon.api.controllers.Controller;
+import org.school.ezon.api.controllers.StateInit;
 import org.school.ezon.api.facade.Facade;
 import org.school.ezon.api.facade.UserFacadeFactory;
 
@@ -27,7 +29,7 @@ import org.school.ezon.api.facade.UserFacadeFactory;
 @Path("Authenticate")
 public class AuthenticateResource {
 
-    Facade facade = UserFacadeFactory.getInstance();
+    Controller controller = StateInit.getController();
 
     @Context
     private UriInfo context;
@@ -62,7 +64,7 @@ public class AuthenticateResource {
     public Response signUp(@PathParam("userName") String email, @PathParam("password") String password) {
         try {
             // TODO: Change use from facade to a controller!
-            return Response.ok(facade.createUser(email, password)).build();
+            return Response.ok(controller.signUp(email, password)).build();
         } catch (UserExistException ex) {
             return  Response.serverError().build();
         }
