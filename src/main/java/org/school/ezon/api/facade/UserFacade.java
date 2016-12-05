@@ -94,4 +94,13 @@ public class UserFacade implements Facade {
         return popularSearches;
     }
 
+    public static void main(String[] args) {
+        List<AllSearches> allSearches = UserFacadeFactory.getInstance().getPopularSearches();
+        for (AllSearches as : allSearches) {
+            System.out.println(as.getSearchWord() + ": " + as.getCount());
+            
+        }
+        System.out.println(allSearches.size());
+    }
+
 }

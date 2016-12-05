@@ -5,6 +5,7 @@
  */
 package org.school.ezon.api.facade;
 
+import java.util.List;
 import javax.persistence.Persistence;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,6 +13,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.school.ezon.api.entity.AllSearches;
 import org.school.ezon.api.entity.Users;
 
 /**
@@ -51,6 +53,14 @@ public class UserFacadeTest {
         String password = "1234";
         Users result = facade.createUser(email, password);
         assertEquals(email, result.getEmail());
+    }
+    
+    @Test 
+    public void testGetPopularSearches() {
+        System.out.println("getPopularSearches");
+        List<AllSearches> popularSearches = facade.getPopularSearches();
+        assertNotNull(popularSearches);
+        assertEquals(0, popularSearches.size());
     }
     
 }
