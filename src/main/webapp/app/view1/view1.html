@@ -2,33 +2,33 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <form autocomplete="off">
-                    <div style="margin-bottom: 60px" class="page-header">
-                        <h1 class="text-center">eZon searcher</h1>
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Sign Up</button>
-                        <!-- Modal -->
-                        <div id="myModal" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
+                <div style="margin-bottom: 60px" class="page-header">
+                    <h1 class="text-center">eZon searcher</h1>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Sign Up</button>
+                </div>
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
 
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Sign Up Form</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <input type="text" placeholder="E-mail" ng-model="newUser.userEmail">
-                                        <input type="text" placeholder="Password" ng-model="newUser.password">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input ng-click="createUser()"  type="submit" value="Create User" class="btn btn-default">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Sign Up Form</h4>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" placeholder="E-mail" ng-model="newUser.userEmail">
+                                <input type="text" placeholder="Password" ng-model="newUser.password">
+                            </div>
+                            <div class="modal-footer">
+                                <input ng-click="createUser()"  type="submit" value="Create User" class="btn btn-default">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
+
                     </div>
+                </div>
+                <form autocomplete="off">
                     <div style="margin-bottom: 60px" class="col-md-6 col-md-offset-2">
                         <input ng-model="searchText" class="form-control" type="text" placeholder="search">
                     </div>

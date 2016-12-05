@@ -15,9 +15,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.school.ezon.api.controllers.Controller;
 import org.school.ezon.api.controllers.StateInit;
-import org.school.ezon.api.dataCollectors.DBADataCollector;
-import org.school.ezon.api.dataCollectors.DataCollector;
-import org.school.ezon.api.dataFormatters.DBAFormatter;
 
 /**
  * REST Web Service
@@ -26,6 +23,7 @@ import org.school.ezon.api.dataFormatters.DBAFormatter;
  */
 @Path("products")
 public class ProductsEndpoint {
+
     Controller ctrl = StateInit.getController();
 
     @Context

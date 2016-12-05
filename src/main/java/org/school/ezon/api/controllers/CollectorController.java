@@ -56,7 +56,7 @@ public class CollectorController implements ICollectorController {
             System.err.println(ex.getStackTrace().toString());
         }
 
-       // threadPool.shutdown();
+        // threadPool.shutdown();
         return products;
     }
 
@@ -81,9 +81,9 @@ public class CollectorController implements ICollectorController {
                 products.addAll(future.get());
             }
         } catch (ExecutionException ex) {
-            System.out.println(ex.getStackTrace());
+            ex.printStackTrace();
         } catch (InterruptedException ex) {
-            System.err.println(ex.getStackTrace());
+            ex.printStackTrace();
         }
 
         //threadPool.shutdown();
