@@ -5,6 +5,7 @@
  */
 package org.school.ezon.api.endpoints;
 
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -15,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.school.ezon.api.controllers.Controller;
 import org.school.ezon.api.controllers.StateInit;
+import org.school.ezon.api.pojo.Product;
 
 /**
  * REST Web Service
@@ -75,5 +77,13 @@ public class ProductsEndpoint {
     public Response getProductsBySearchAndCategory(@PathParam("searchString") String search, @PathParam("category") String category) {
         //TODO return proper representation object
         return Response.ok(ctrl.getProductsBySearchAndCategory(category, search)).build();
+    }
+
+    @Path("/popular")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPopularProducts() {
+        List<Product> products = ctrl.getPopularProducts();
+        return Response.ok(products).build();
     }
 }

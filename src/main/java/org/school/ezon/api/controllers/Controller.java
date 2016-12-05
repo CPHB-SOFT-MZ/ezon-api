@@ -18,23 +18,24 @@ import org.school.ezon.api.sorters.SortByPrice;
  * @author Mikkel
  */
 public class Controller {
-    
+
     private final ICollectorController collectorControl;
     private final Facade facade;
-    
-    public Controller(ICollectorController collectorControl, Facade facade){
+
+    public Controller(ICollectorController collectorControl, Facade facade) {
         this.collectorControl = collectorControl;
         this.facade = facade;
     }
-    
-    public List<Product> getProductsFromCategory(String category){
+
+    public List<Product> getProductsFromCategory(String category) {
         return collectorControl.getProductsFromCategory(category);
     }
-    
+
     /**
      * Returns the CollectorControllers method by the same same
+     *
      * @param searchString
-     * @return 
+     * @return
      */
     public List<Product> getProductsBySearch(String searchString) {
         facade.updateUnspecificSearch(searchString);
@@ -42,20 +43,25 @@ public class Controller {
         Collections.sort(products, new SortByPrice());
         return products;
     }
-    
+
     /**
-     * Gets a list of products from ebay and DBA sorted by price from a keyword and a search string
+     * Gets a list of products from ebay and DBA sorted by price from a keyword
+     * and a search string
+     *
      * @param category
      * @param searchString
-     * @return 
+     * @return
      */
     public List<Product> getProductsBySearchAndCategory(String category, String searchString) {
         facade.updateUnspecificSearch(searchString);
         return collectorControl.getProductsBySearchAndCategory(category, searchString);
     }
-    
-    public Users signUp(String email, String password) throws UserExistException{
+
+    public List<Product> getPopularProducts() {
+        return collectorControl.getPopularProducts(facade.getPopularSearches());
+    }
+
+    public Users signUp(String email, String password) throws UserExistException {
         return facade.createUser(email, password);
     }
-    
 }

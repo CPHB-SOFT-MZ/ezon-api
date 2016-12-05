@@ -36,6 +36,16 @@ angular.module('myApp.view1', ['ngRoute'])
                             });
                 };
 
+                $scope.getPopularProducts = function () {
+                    $http.get("http://localhost:8084/api/api/products/popular").then(function (data) {
+                        $scope.popular = data.data;
+                    }, function (error) {
+                        console.log(error);
+                    });
+                };
+
+                $scope.getPopularProducts();
+
                 $scope.getResults = function (searchText, category) {
                     console.log(searchText);
                     console.log(category);

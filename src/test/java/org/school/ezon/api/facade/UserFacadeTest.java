@@ -58,9 +58,9 @@ public class UserFacadeTest {
     @Test 
     public void testGetPopularSearches() {
         System.out.println("getPopularSearches");
-        List<AllSearches> popularSearches = facade.getPopularSearches();
+        List<AllSearches> popularSearches = UserFacadeFactory.getInstance().getPopularSearches();
         assertNotNull(popularSearches);
-        assertEquals(0, popularSearches.size());
+        assertEquals(4, popularSearches.size());
     }
     
 }

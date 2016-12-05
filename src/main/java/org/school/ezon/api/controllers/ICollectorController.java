@@ -6,6 +6,7 @@
 package org.school.ezon.api.controllers;
 
 import java.util.List;
+import org.school.ezon.api.entity.AllSearches;
 import org.school.ezon.api.pojo.Product;
 
 /**
@@ -13,8 +14,12 @@ import org.school.ezon.api.pojo.Product;
  * @author Mikkel
  */
 public interface ICollectorController {
+
     List<Product> getProductsBySearchAndCategory(String category, String searchString);
+
     List<Product> getProductsBySearch(String searchString);
+
     List<Product> getProductsFromCategory(String category);
-            
+
+    List<Product> getPopularProducts(List<AllSearches> searches);
 }
