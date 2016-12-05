@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Ezon</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container result">
+            <div class="row">
+                <div class="logo-result">
+                    <img src="images/logo.png">
+                </div>
+
+                <div class="result-search">
+                    <div class="input-group">
+                        <input type="hidden" name="search_param" value="all" id="search_param">         
+                        <input ng-model="searchText" type="text" class="form-control" name="x" placeholder="Search for products">
+                    <div class="input-group-btn search-panel">
+                            <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span id="search_concept">Select Category</span> <span class="caret"></span>
+                            </button>-->
+                            <select ng-model="category" class="btn btn-default" id="search_concept">
+                            <option class="caret" value="undefined" selected="selected">ALL Categories</option>
+                            <option class="drop1">MOBILE</option>
+                            <option class="drop2">LAPTOPS AND PCS</option>
+                            <option class="drop3">WATCHES</option>
+                            <option class="drop4">CARS</option>
+                            <option class="drop5">TEXT BOOKS</option>
+                            <option class="drop6">FURNITURES</option>
+                            <option class="drop7">ELECTRONICS</option>
+                        </select>
+                        </div>
+                        <span class="input-group-btn">
+                        <button ng-click="getResults(searchText, category)" type="submit" class="btn btn-default">Search</button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row products">
+                <div class="products-header">
+                    <div class="prod-header-lft">Products</div>
+                    <div class="prod-header-rgt">Price <span class="caret"></span></div>
+                </div>
+                <div class="products-content">
+                    <ul>
+                        <li ng-repeat="p in data| product">
+                            <div class="products-cont-lft">
+                                <img src="{{p.thumbnailImage}}" class="image-responsive">
+                                <div class="prod-cont-para">
+                                    <h3>{{p.title}}</h3>
+                                    <p>{{p.excerpt}}</p>
+                                </div>
+                            </div>
+                            <div class="products-cont-rgt">
+                                <span>{{p.price}} dkk</span>
+                                <a href="{{p.url}}" class="btn buy-now"></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+    </body>
+</html>

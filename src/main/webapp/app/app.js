@@ -7,14 +7,16 @@ angular.module('myApp', [
   'angular-jwt',
   'ui.bootstrap',
   'myApp.security',
-  'myApp.view1',
+  'myApp.index',
+  'myApp.result',
+  'myApp.controllers',
   'myApp.filters',
   'myApp.directives',
   'myApp.factories',
   'myApp.services'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/index'});
 }]).
 config(function ($httpProvider) {
    $httpProvider.interceptors.push('AuthInterceptor');
