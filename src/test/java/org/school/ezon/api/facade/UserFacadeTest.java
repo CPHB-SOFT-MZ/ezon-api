@@ -55,6 +55,7 @@ public class UserFacadeTest {
         assertEquals(email, result.getEmail());
     }
     
+//    Edit test
 //    @Test 
 //    public void testGetPopularSearches() {
 //        System.out.println("getPopularSearches");
