@@ -55,12 +55,12 @@ public class UserFacadeTest {
         assertEquals(email, result.getEmail());
     }
     
-    @Test 
-    public void testGetPopularSearches() {
-        System.out.println("getPopularSearches");
-        List<AllSearches> popularSearches = UserFacadeFactory.getInstance().getPopularSearches();
-        assertNotNull(popularSearches);
-        assertEquals(4, popularSearches.size());
-    }
+//    @Test 
+//    public void testGetPopularSearches() {
+//        System.out.println("getPopularSearches");
+//        List<AllSearches> popularSearches = UserFacadeFactory.getInstance().getPopularSearches();
+//        assertNotNull(popularSearches);
+//        assertEquals(4, popularSearches.size());
+//    }
     
 }
