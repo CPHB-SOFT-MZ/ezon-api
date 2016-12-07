@@ -4,5 +4,5 @@ angular.module('myApp.index', ['ngRoute'])
                 $routeProvider.when('/index', {
                     templateUrl: 'app/index/index.html',
                     controller: 'IndexCtrl'
-                })
+                });
             }]);
