@@ -46,13 +46,13 @@ angular.module('myApp.controllers', [])
                     }
 
                     $http({
-                        url: 'http://localhost:8084/api/api/products/' + searchText,
+                        url: 'http://localhost:8084/api/api/products/' + category + searchText,
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {
                                 ResultData.setData(data);
                                 $window.location.href = "#/result";
-
+                                $scope.category = "undefined";
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
@@ -86,12 +86,13 @@ angular.module('myApp.controllers', [])
                     }
 
                     $http({
-                        url: 'http://localhost:8084/api/api/products/' + searchText,
+                        url: 'http://localhost:8084/api/api/products/' + category + searchText,
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {
                                 ResultData.setData(data);
                                 $scope.data = ResultData.getData();
+                                $scope.category = "undefined";
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
