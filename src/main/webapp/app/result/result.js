@@ -5,5 +5,5 @@ angular.module('myApp.result', ['ngRoute'])
                     templateUrl: 'app/result/result.html',
                     controller: 'ResultCtrl'
                 });
-            }])
+            }]);
         
