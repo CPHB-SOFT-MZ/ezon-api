@@ -15,9 +15,6 @@ and open the template in the editor.
     <!--<link rel="stylesheet" href="app/app.css">-->
     <link href="app/style.css" rel="stylesheet" type="text/css"/>
 
-    <!-- In production use:
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-    -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
@@ -31,9 +28,10 @@ and open the template in the editor.
     <script src="app/components/filters.js"></script>
     <script src="app/components/directives.js"></script>
     <script src="app/components/factories.js"></script>
+    <script src="app/components/services.js"></script>
 </head>
 <body>
-<div>
+    <div>
     <div ng-view></div>
 </div>
 <script type="text/ng-template" id="errorModal.html">

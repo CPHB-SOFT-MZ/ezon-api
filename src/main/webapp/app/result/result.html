@@ -27,7 +27,7 @@
                         </select>
                         </div>
                         <span class="input-group-btn">
-                        <button ng-submit="getResults(searchText, category)" type="submit" class="btn btn-default">Search</button>
+                        <button ng-click="getResults(searchText, category)" type="submit" class="btn btn-default">Search</button>
                     </span>
                     </div>
                 </div>
@@ -49,6 +49,7 @@
                             </div>
                             <div class="products-cont-rgt">
                                 <a href="{{p.url}}" class="btn buy-now">{{p.price}} dkk</a>
+                                <span>{{p.price}} dkk</span>
                             </div>
                         </li>
                     </ul>

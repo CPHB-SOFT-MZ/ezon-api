@@ -12,7 +12,8 @@ angular.module('myApp', [
     'myApp.controllers',
     'myApp.filters',
     'myApp.directives',
-    'myApp.factories'
+    'myApp.factories',
+    'myApp.services'
 ]).
         config(['$routeProvider', function ($routeProvider) {
                 $routeProvider.otherwise({redirectTo: '/index'});

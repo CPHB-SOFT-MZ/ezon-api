@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Wed Dec 07 11:28:49 CET 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0158-d8d4-192b-00000811d140 
+Wed Dec 07 12:18:55 CET 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0158-d901-f836-000007d6a790 
 on database directory /Users/philliphbrink/NetBeansProjects/3. Semester/Semester project/ezon-api/target/testDB with class loader sun.misc.Launcher$AppClassLoader@232204a1 
 Loaded from file:/Users/philliphbrink/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
 java.vendor=Oracle Corporation
