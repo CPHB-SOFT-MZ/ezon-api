@@ -77,4 +77,9 @@ public class DBADataCollector implements DataCollector {
                 .header("dbaapikey", "087157d7-84d5-4f2b-1d02-08d282f6c857")
                 .get(String.class));
     }
+
+    @Override
+    public String getDataCollectorID() {
+        return "dba";
+    }
 }

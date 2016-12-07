@@ -15,6 +15,7 @@ import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.school.ezon.api.dataCollectors.DataCollector;
+import org.school.ezon.api.dataFormatters.CategoryConverter;
 import org.school.ezon.api.pojo.Product;
 
 /**
@@ -36,8 +37,25 @@ public class CollectorController implements ICollectorController {
         List<Callable<List<Product>>> callables = new ArrayList();
         List<Future<List<Product>>> futures = new ArrayList();
 
+        String[] dbaCats = CategoryConverter.convertCategoryToDestination(category, "dba");
+        String[] ebayCats = CategoryConverter.convertCategoryToDestination(category, "ebay");
+        
         for (DataCollector dc : dataCollectors) {
-            callables.add(new CollectorRunnerSearchByStringAndCategory(dc, searchString, category));
+            switch(dc.getDataCollectorID()){
+                case "dba":
+                    for(String dbaCat : dbaCats){
+                        callables.add(new CollectorRunnerSearchByStringAndCategory(dc, searchString, dbaCat));
+                    }
+                    break;
+                case "ebay":
+                    for(String ebayCat : ebayCats){
+                        callables.add(new CollectorRunnerSearchByStringAndCategory(dc, searchString, ebayCat));
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
         }
 
         try {
@@ -96,8 +114,25 @@ public class CollectorController implements ICollectorController {
         List<Callable<List<Product>>> callables = new ArrayList();
         List<Future<List<Product>>> futures = new ArrayList();
 
+        String[] dbaCats = CategoryConverter.convertCategoryToDestination(category, "dba");
+        String[] ebayCats = CategoryConverter.convertCategoryToDestination(category, "ebay");
+        
         for (DataCollector dc : dataCollectors) {
-            callables.add(new CollectorRunnerSearchByCategory(dc, category));
+            switch(dc.getDataCollectorID()){
+                case "dba":
+                    for(String dbaCat : dbaCats){
+                        callables.add(new CollectorRunnerSearchByCategory(dc, dbaCat));
+                    }
+                    break;
+                case "ebay":
+                    for(String ebayCat : ebayCats){
+                        callables.add(new CollectorRunnerSearchByCategory(dc, ebayCat));
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
         }
 
         try {
