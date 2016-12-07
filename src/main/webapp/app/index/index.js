@@ -24,19 +24,19 @@ angular.module('myApp.index', ['ngRoute'])
                     if ($scope.newUser.password !== $scope.newUser.retypePassword) {
                         alert("Wrong password");
                     } else {
-                    $http({
-                        url: 'http://localhost:8084/api/api/Authenticate/' + $scope.newUser.userEmail + '/' + $scope.newUser.password,
-                        method: 'POST'
-                    })
-                            .success(function (data, status, headers, config) {
-                                console.log("Works");
-                                console.log(data);
-                            })
-                            .error(function (data, status, headers, config) {
-                                console.log(status);
-                                console.log("Dosnt work");
-                            });
-                        }
+                        $http({
+                            url: 'http://localhost:8084/api/api/Authenticate/' + $scope.newUser.userEmail + '/' + $scope.newUser.password,
+                            method: 'POST'
+                        })
+                                .success(function (data, status, headers, config) {
+                                    console.log("Works");
+                                    console.log(data);
+                                })
+                                .error(function (data, status, headers, config) {
+                                    console.log(status);
+                                    console.log("Dosnt work");
+                                });
+                    }
                 };
 
                 $scope.getResults = function (searchText, category) {
@@ -57,7 +57,7 @@ angular.module('myApp.index', ['ngRoute'])
                                 console.log(data);
                                 ResultData.setData(data);
                                 console.log(ResultData.getData());
-                                $window.location.href = "#/result";
+                                $window.location.href = "/result";
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
@@ -67,5 +67,5 @@ angular.module('myApp.index', ['ngRoute'])
 
             }]);
 
-        
+
 

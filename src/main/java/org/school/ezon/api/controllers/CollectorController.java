@@ -125,7 +125,6 @@ public class CollectorController implements ICollectorController {
     @Override
     public List<Product> getPopularProducts(List<AllSearches> searches) {
         List<Product> products = new ArrayList();
-        List<Product> finalProducts = new ArrayList();
         List<Callable<List<Product>>> callables = new ArrayList();
         List<Future<List<Product>>> futures = new ArrayList();
 
@@ -152,7 +151,13 @@ public class CollectorController implements ICollectorController {
         }
 
         //threadPool.shutdown();
+        return limitProducts(products);
+    }
+
+    public List<Product> limitProducts(List<Product> products) {
+        List<Product> finalProducts = new ArrayList();
         Collections.shuffle(products);
+
         int dba = 0;
         int ebay = 0;
         for (Product p : products) {

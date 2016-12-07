@@ -18,6 +18,8 @@
   <persistence-unit name="pu_test" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>org.school.ezon.api.entity.Users</class>
+    <class>org.school.ezon.api.entity.AllSearches</class>
+    <class>org.school.ezon.api.entity.UserSearches</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
