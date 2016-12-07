@@ -6,8 +6,8 @@ angular.module('myApp.controllers', [])
         .controller('AppCtrl', function () {
 
         })
-        .controller('IndexCtrl', ["ResultData", '$scope', '$http', function (ResultData, $window, $scope, $http) {
-
+        .controller('IndexCtrl', ["ResultData", '$window', '$scope', '$http', function (ResultData, $window, $scope, $http) {
+                console.log("test3");
                 $scope.category = "undefined";
 
                 $scope.newUser = {
@@ -57,14 +57,15 @@ angular.module('myApp.controllers', [])
                                 ResultData.setData(data);
                                 console.log(ResultData.getData());
                                 $window.location.href = "#/result";
+                                
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
-                                $window.location.href = "#/result";
                             });
                 };
 
             }])
+        
         .controller("ResultCtrl", ["ResultData", '$scope', '$http', function (ResultData, $window, $scope, $http) {
                 $scope.data = ResultData.getData();
                 $scope.getResults = function (searchText, category) {
