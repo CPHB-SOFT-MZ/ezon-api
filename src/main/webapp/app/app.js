@@ -2,24 +2,33 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'ngRoute',
-  'ngAnimate',
-  'angular-jwt',
-  'ui.bootstrap',
-  'myApp.security',
-  'myApp.index',
-  'myApp.result',
-  'myApp.controllers',
-  'myApp.filters',
-  'myApp.directives',
-  'myApp.factories',
-  'myApp.services'
+    'ngRoute',
+    'ngAnimate',
+    'angular-jwt',
+    'ui.bootstrap',
+    'myApp.security',
+    'myApp.controllers',
+    'myApp.filters',
+    'myApp.directives',
+    'myApp.factories'
 ]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/index'});
-}]).
-config(function ($httpProvider) {
-   $httpProvider.interceptors.push('AuthInterceptor');
-});
+        config(['$routeProvider', function ($routeProvider) {
+                $routeProvider.otherwise({redirectTo: '/index'});
+            }]).
+        config(function ($httpProvider) {
+            $httpProvider.interceptors.push('AuthInterceptor');
+        }).
+        config(['$routeProvider', function ($routeProvider) {
+                $routeProvider.when('/result', {
+                    templateUrl: 'app/result/result.html',
+                    controller: 'ResultCtrl'
+                });
+            }]).
+        config(['$routeProvider', function ($routeProvider) {
+                $routeProvider.when('/index', {
+                    templateUrl: 'app/index/index.html',
+                    controller: 'IndexCtrl'
+                });
+            }]);
 
 

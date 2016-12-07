@@ -56,7 +56,7 @@ angular.module('myApp.controllers', [])
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
-                        alert("The services is currently down");
+                                alert("The services is currently down");
                             });
                 };
 
