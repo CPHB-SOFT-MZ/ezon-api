@@ -1,8 +1,8 @@
-angular.module('myApp.index', ['ngRoute'])
-
-        .config(['$routeProvider', function ($routeProvider) {
-                $routeProvider.when('/index', {
-                    templateUrl: 'app/index/index.html',
-                    controller: 'IndexCtrl'
-                });
-            }]);
+//angular.module('myApp.index', ['ngRoute'])
+//
+//        .config(['$routeProvider', function ($routeProvider) {
+//                $routeProvider.when('/index', {
+//                    templateUrl: 'app/index/index.html',
+//                    controller: 'IndexCtrl'
+//                });
+//            }]);
