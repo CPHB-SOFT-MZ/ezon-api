@@ -5,7 +5,6 @@
  */
 package org.school.ezon.api.facade;
 
-import java.util.List;
 import javax.persistence.Persistence;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -13,7 +12,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.school.ezon.api.entity.AllSearches;
 import org.school.ezon.api.entity.Users;
 
 /**
@@ -21,24 +19,24 @@ import org.school.ezon.api.entity.Users;
  * @author kaspe
  */
 public class UserFacadeTest {
-    
+
     UserFacade facade = new UserFacade(Persistence.createEntityManagerFactory("pu_test"));
-    
+
     public UserFacadeTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -54,8 +52,7 @@ public class UserFacadeTest {
         Users result = facade.createUser(email, password);
         assertEquals(email, result.getEmail());
     }
-    
-//    Edit test
+
 //    @Test 
 //    public void testGetPopularSearches() {
 //        System.out.println("getPopularSearches");
@@ -63,5 +60,4 @@ public class UserFacadeTest {
 //        assertNotNull(popularSearches);
 //        assertEquals(4, popularSearches.size());
 //    }
-    
 }
