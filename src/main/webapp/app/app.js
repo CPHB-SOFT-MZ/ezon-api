@@ -12,13 +12,13 @@ angular.module('myApp', [
     'myApp.controllers',
     'myApp.filters',
     'myApp.directives',
-    'myApp.factories',
-    //'myApp.services'
-]).
-        config(['$routeProvider', function ($routeProvider) {
+    'myApp.factories'
+            //'myApp.services'
+])
+        .config(['$routeProvider', function ($routeProvider) {
                 $routeProvider.otherwise({redirectTo: '/index'});
-            }]).
-        config(function ($httpProvider) {
+            }])
+        .config(function ($httpProvider) {
             $httpProvider.interceptors.push('AuthInterceptor');
         })
         .config(['$routeProvider', function ($routeProvider) {
@@ -33,5 +33,4 @@ angular.module('myApp', [
                     controller: 'ResultCtrl'
                 });
             }]);
-
 

@@ -14,21 +14,21 @@
                     <div class="input-group">
                         <input type="hidden" name="search_param" value="all" id="search_param">         
                         <input ng-model="searchText" type="text" class="form-control" name="x" placeholder="Search for products">
-                    <div class="input-group-btn search-panel">
+                        <div class="input-group-btn search-panel">
                             <select ng-model="category" class="btn btn-default" id="search_concept">
-                            <option class="caret" value="undefined" selected="selected">ALL Categories</option>
-                            <option class="drop1">MOBILE</option>
-                            <option class="drop2">LAPTOPS AND PCS</option>
-                            <option class="drop3">WATCHES</option>
-                            <option class="drop4">CARS</option>
-                            <option class="drop5">TEXT BOOKS</option>
-                            <option class="drop6">FURNITURES</option>
-                            <option class="drop7">ELECTRONICS</option>
-                        </select>
+                                <option class="caret" value="undefined" selected="selected">ALL Categories</option>
+                                <option class="drop1">MOBILE</option>
+                                <option class="drop2">LAPTOPS AND PCS</option>
+                                <option class="drop3">WATCHES</option>
+                                <option class="drop4">CARS</option>
+                                <option class="drop5">TEXT BOOKS</option>
+                                <option class="drop6">FURNITURES</option>
+                                <option class="drop7">ELECTRONICS</option>
+                            </select>
                         </div>
                         <span class="input-group-btn">
-                        <button ng-click="getResults(searchText, category)" type="submit" class="btn btn-default">Search</button>
-                    </span>
+                            <button ng-click="getResults(searchText, category)" type="submit" class="btn btn-default">Search</button>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="products-cont-rgt">
                                 <a href="{{p.url}}" class="btn buy-now"><span>{{p.price}} dkk</span></a>
-                                
+
                             </div>
                         </li>
                     </ul>

@@ -23,18 +23,18 @@ angular.module('myApp.controllers', [])
                     if ($scope.newUser.password !== $scope.newUser.retypePassword) {
                         alert("Wrong password");
                     } else {
-                    $http({
-                        url: 'http://localhost:8084/api/api/Authenticate/' + $scope.newUser.userEmail + '/' + $scope.newUser.password,
-                        method: 'POST'
-                    })
-                            .success(function (data, status, headers, config) {
-                                console.log("Works");
-                            })
-                            .error(function (data, status, headers, config) {
-                                console.log(status);
-                                alert("The services is currently down");
-                            });
-                        }
+                        $http({
+                            url: 'http://localhost:8084/api/api/Authenticate/' + $scope.newUser.userEmail + '/' + $scope.newUser.password,
+                            method: 'POST'
+                        })
+                                .success(function (data, status, headers, config) {
+                                    console.log("Works");
+                                })
+                                .error(function (data, status, headers, config) {
+                                    console.log(status);
+                                    alert("The services is currently down");
+                                });
+                    }
                 };
 
                 $scope.getResults = function (searchText, category) {
@@ -52,17 +52,27 @@ angular.module('myApp.controllers', [])
                             .success(function (data, status, headers, config) {
                                 ResultData.setData(data);
                                 $window.location.href = "#/result";
-                                
+
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
-                        $window.location.href = "#/result";
+                                $window.location.href = "#/result";
 //                                alert("The services is currently down");
                             });
                 };
 
+                $scope.getPopular = function () {
+                    $http.get("http://localhost:8084/api/api/products/popular").then(function (data) {
+                        $scope.popular = data.data;
+                    }, function (error) {
+                        console.log(error);
+                    });
+                };
+
+                $scope.getPopular();
+
             }])
-        
+
         .controller("ResultCtrl", ["ResultData", '$scope', '$http', function (ResultData, $scope, $http) {
                 $scope.data = ResultData.getData();
                 $scope.getResults = function (searchText, category) {
