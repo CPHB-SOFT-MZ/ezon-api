@@ -5,45 +5,85 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html ng-app="myApp">
-<head>
-    <title>TODO supply a title</title>
-    <meta charset="windows-1252">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!--<link rel="stylesheet" href="app/app.css">-->
-    <link href="app/style.css" rel="stylesheet" type="text/css"/>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--<link rel="stylesheet" href="app/app.css">-->
+        <link href="app/style.css" rel="stylesheet" type="text/css"/>
 
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
-    <script src='bower_components/angular-animate/angular-animate.min.js'></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="app/app.js"></script>
-   <!-- <script src="app/index/index.js"></script>-->
-   <!--<script src="app/result/result.js"></script>-->
-    <script src="app/components/auth.js"></script>
-    <script src="app/components/controllers.js"></script>
-    <script src="app/components/filters.js"></script>
-    <script src="app/components/directives.js"></script>
-    <script src="app/components/factories.js"></script>
-    <!--<script src="app/components/services.js"></script>-->
-</head>
-<body>
-    <div>
-    <div ng-view></div>
-</div>
-<script type="text/ng-template" id="errorModal.html">
-    <div class="modal-header">
-        <h3 class="modal-title">Error!</h3>
-    </div>
-    <div class="modal-body">
-        <p>{{error}}</p>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()" autofocus>OK</button>
-    </div>
-</script>
-</body>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+        <script src='bower_components/angular-animate/angular-animate.min.js'></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="app/app.js"></script>
+        <!-- <script src="app/index/index.js"></script>-->
+        <!--<script src="app/result/result.js"></script>-->
+        <script src="app/components/auth.js"></script>
+        <script src="app/components/controllers.js"></script>
+        <script src="app/components/filters.js"></script>
+        <script src="app/components/directives.js"></script>
+        <script src="app/components/factories.js"></script>
+        <!--<script src="app/components/services.js"></script>-->
+    </head>
+    <body>
+        <div id="ac-wrapper" style='display:none' onClick="hideNow(event)">
+            <div id="popup">
+                <center>
+                    <h2>Websitet anvender cookies til at huske dine indstillinger og statistik. Denne information deles med tredjepart.</h2>
+                    <p><a href="app/privatepolitik-cookie/privatepolitik.html">Læs mere her</a></p>
+                    <input type="submit" name="submit" value="Ok" onClick="PopUp('hide')" />
+                </center>
+            </div>
+            <script>
+
+
+                function PopUp(hideOrshow) {
+                    if (hideOrshow == 'hide') {
+                        document.getElementById('ac-wrapper').style.display = "none";
+                    } else if (localStorage.getItem("popupWasShown") == null) {
+                        localStorage.setItem("popupWasShown", 1);
+                        document.getElementById('ac-wrapper').removeAttribute('style');
+                    }
+                }
+                window.onload = function () {
+                    setTimeout(function () {
+                        PopUp('show');
+                    }, 0);
+                };
+
+
+                function hideNow(e) {
+                    if (e.target.id == 'ac-wrapper')
+                        document.getElementById('ac-wrapper').style.display = 'none';
+                };
+            </script>
+        </div>
+        <div> 
+            <div ng-view></div>
+        </div>
+        <script type="text/ng-template" id="errorModal.html">
+            <div class="modal-header">
+            <h3 class="modal-title">Error!</h3>
+            </div>
+            <div class="modal-body">
+            <p>{{error}}</p>
+            </div>
+            <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()" autofocus>OK</button>
+            </div>
+            alert("We are");
+        </script>
+        <footer class="footer">
+            <div style="text-align: center" class="container">
+                <span class="text-muted">
+                    <a href="../privatepolitik-cookie/privatepolitik.html">Privatpolitik</a>
+                </span>
+            </div>
+        </footer>
+    </body>
 </html>
