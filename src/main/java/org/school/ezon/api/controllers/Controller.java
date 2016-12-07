@@ -8,6 +8,7 @@ package org.school.ezon.api.controllers;
 import java.util.Collections;
 import java.util.List;
 import org.school.ezon.api.Exceptions.UserExistException;
+import org.school.ezon.api.dataFormatters.SpaceFormatter;
 import org.school.ezon.api.entity.Users;
 import org.school.ezon.api.facade.Facade;
 import org.school.ezon.api.pojo.Product;
@@ -38,8 +39,9 @@ public class Controller {
      * @return
      */
     public List<Product> getProductsBySearch(String searchString) {
-        facade.updateUnspecificSearch(searchString);
-        List<Product> products = collectorControl.getProductsBySearch(searchString);
+        String trimmedSearch = SpaceFormatter.format(searchString);
+        facade.updateUnspecificSearch(trimmedSearch);
+        List<Product> products = collectorControl.getProductsBySearch(trimmedSearch);
         Collections.sort(products, new SortByPrice());
         return products;
     }
@@ -53,8 +55,9 @@ public class Controller {
      * @return
      */
     public List<Product> getProductsBySearchAndCategory(String category, String searchString) {
-        facade.updateUnspecificSearch(searchString);
-        return collectorControl.getProductsBySearchAndCategory(category, searchString);
+        String trimmedSearch = SpaceFormatter.format(searchString);
+        facade.updateUnspecificSearch(trimmedSearch);
+        return collectorControl.getProductsBySearchAndCategory(category, trimmedSearch);
     }
 
     public List<Product> getPopularProducts() {

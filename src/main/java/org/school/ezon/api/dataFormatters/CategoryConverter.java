@@ -25,6 +25,7 @@ public class CategoryConverter {
         categories.get("vehiclesandaccess").put("dba", new String[]{"1", "30", "8", "20", "11", "46"});
         categories.get("vehiclesandaccess").put("ebay", new String[]{""});
         //categories.get("cars").put("amazon", new String[] {"248878031"});
+        categories.get("vehiclesandaccess").put("ebay", new String[]{""});
 
         categories.put("estate", new HashMap());
         categories.get("estate").put("dba", new String[]{"3"});
