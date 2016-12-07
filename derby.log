@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Wed Dec 07 09:58:56 CET 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0158-d881-d069-00000757c940 
+Wed Dec 07 10:16:52 CET 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0158-d892-3e51-00000762df40 
 on database directory C:\Users\kaspe\Desktop\School\Sem3-Project\ezon-api\target\testDB with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
 Loaded from file:/C:/Users/kaspe/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
 java.vendor=Oracle Corporation
