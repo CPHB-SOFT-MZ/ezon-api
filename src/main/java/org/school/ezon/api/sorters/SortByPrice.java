@@ -18,6 +18,12 @@ public class SortByPrice implements Comparator {
     public int compare(Object o1, Object o2) {
         Product pr1 = (Product) o1;
         Product pr2 = (Product) o2;
+        if (pr1.getPrice().contains(",")){
+            pr1.setPrice(pr1.getPrice().replace(",", "."));
+        }
+        if (pr2.getPrice().contains(",")){
+            pr2.setPrice(pr1.getPrice().replace(",", "."));
+        }
         if (Float.valueOf(pr1.getPrice()) < Float.valueOf(pr2.getPrice())) {
             return -1;
         }
