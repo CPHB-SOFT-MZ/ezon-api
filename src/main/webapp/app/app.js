@@ -6,6 +6,8 @@ angular.module('myApp', [
     'ngAnimate',
     'angular-jwt',
     'ui.bootstrap',
+    'myApp.index',
+    'myApp.result',
     'myApp.security',
     'myApp.controllers',
     'myApp.filters',
@@ -17,18 +19,6 @@ angular.module('myApp', [
             }]).
         config(function ($httpProvider) {
             $httpProvider.interceptors.push('AuthInterceptor');
-        }).
-        config(['$routeProvider', function ($routeProvider) {
-                $routeProvider.when('/result', {
-                    templateUrl: 'app/result/result.html',
-                    controller: 'ResultCtrl'
-                });
-            }]).
-        config(['$routeProvider', function ($routeProvider) {
-                $routeProvider.when('/index', {
-                    templateUrl: 'app/index/index.html',
-                    controller: 'IndexCtrl'
-                });
-            }]);
+        });
 
 
