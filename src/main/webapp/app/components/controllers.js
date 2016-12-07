@@ -6,8 +6,8 @@ angular.module('myApp.controllers', [])
         .controller('AppCtrl', function () {
 
         })
-        .controller('IndexCtrl', ["ResultData", '$scope', '$http', function (ResultData, $window, $scope, $http) {
-
+        .controller('IndexCtrl', ["ResultData", '$window', '$scope', '$http', function (ResultData, $window, $scope, $http) {
+                console.log("test3");
                 $scope.category = "undefined";
 
                 $scope.newUser = {
@@ -29,18 +29,15 @@ angular.module('myApp.controllers', [])
                     })
                             .success(function (data, status, headers, config) {
                                 console.log("Works");
-                                console.log(data);
                             })
                             .error(function (data, status, headers, config) {
                                 console.log(status);
-                                console.log("Dosnt work");
+                                alert("The services is currently down");
                             });
                         }
                 };
 
                 $scope.getResults = function (searchText, category) {
-                    console.log(searchText);
-                    console.log(category);
 
                     if (angular.isUndefined(category) || category === "undefined") {
                         category = "";
@@ -53,19 +50,19 @@ angular.module('myApp.controllers', [])
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {
-                                console.log(data);
                                 ResultData.setData(data);
-                                console.log(ResultData.getData());
                                 $window.location.href = "#/result";
+                                
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
-                                $window.location.href = "#/result";
+                                alert("The services is currently down");
                             });
                 };
 
             }])
-        .controller("ResultCtrl", ["ResultData", '$scope', '$http', function (ResultData, $window, $scope, $http) {
+        
+        .controller("ResultCtrl", ["ResultData", '$scope', '$http', function (ResultData, $scope, $http) {
                 $scope.data = ResultData.getData();
                 $scope.getResults = function (searchText, category) {
                     console.log(searchText);
@@ -82,16 +79,15 @@ angular.module('myApp.controllers', [])
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {
-                                console.log(data);
                                 ResultData.setData(data);
                                 $scope.data = ResultData.getData();
-                                console.log(ResultData.getData());
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
+                                alert("The services is currently down");
                             });
                 };
-            }])
+            }]);
 
 
 
