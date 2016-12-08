@@ -3,11 +3,28 @@
  */
 
 angular.module('myApp.controllers', [])
-        .controller('AppCtrl', function () {
+        .controller('AppCtrl', ['$scope', function ($scope) {
+            console.log(localStorage.clickcount)
+            showPopUp();
+            function showPopUp() {
+                if (localStorage.clickcount == 1) {
+                    document.getElementById('ac-wrapper').style.display = "none";
+                }
+            }
 
-        })
+            $scope.clickCounter = function() {
+                if (typeof (Storage) !== "undefined") {
+                    if (localStorage.clickcount) {
+                        localStorage.clickcount = Number(localStorage.clickcount) + 1;
+                        document.getElementById('ac-wrapper').style.display = "none";
+                    } else {
+                        localStorage.clickcount = 1;
+                        document.getElementById('ac-wrapper').style.display = "none";
+                    }
+                }
+            }
+        }])
         .controller('IndexCtrl', ["ResultData", '$window', '$scope', '$http', function (ResultData, $window, $scope, $http) {
-                console.log("test3");
                 $scope.category = "undefined";
 
                 $scope.newUser = {
@@ -56,8 +73,7 @@ angular.module('myApp.controllers', [])
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
-                                $window.location.href = "#/result";
-//                                alert("The services is currently down");
+                                alert("The services is currently down");
                             });
                 };
 
@@ -70,8 +86,8 @@ angular.module('myApp.controllers', [])
                 };
 
                 $scope.getPopular();
-
-            }])
+            }
+        ])
 
         .controller("ResultCtrl", ["ResultData", '$scope', '$http', function (ResultData, $scope, $http) {
 
