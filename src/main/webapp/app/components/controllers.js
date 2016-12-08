@@ -74,6 +74,18 @@ angular.module('myApp.controllers', [])
             }])
 
         .controller("ResultCtrl", ["ResultData", '$scope', '$http', function (ResultData, $scope, $http) {
+
+                $scope.currentPage = 0;
+                $scope.pageSize = 6;
+                $scope.numberOfPages = function () {
+                    return Math.ceil($scope.data.length / $scope.pageSize);
+                };
+
+                $scope.scrollTop = function (num) {
+                    $scope.currentPage = $scope.currentPage + num;
+                    window.scrollTo(0, 0);
+                };
+
                 $scope.data = ResultData.getData();
                 $scope.getResults = function (searchText, category) {
                     console.log(searchText);
