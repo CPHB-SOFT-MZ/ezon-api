@@ -29,7 +29,9 @@ public class Controller {
     }
 
     public List<Product> getProductsFromCategory(String category) {
-        return collectorControl.getProductsFromCategory(category);
+        List<Product> products = collectorControl.getProductsFromCategory(category);
+        Collections.sort(products, new SortByPrice());
+        return products;
     }
 
     /**
@@ -57,7 +59,9 @@ public class Controller {
     public List<Product> getProductsBySearchAndCategory(String category, String searchString) {
         String trimmedSearch = SpaceFormatter.format(searchString);
         facade.updateUnspecificSearch(trimmedSearch);
-        return collectorControl.getProductsBySearchAndCategory(category, trimmedSearch);
+        List<Product> products = collectorControl.getProductsBySearchAndCategory(category, trimmedSearch);
+        Collections.sort(products, new SortByPrice());
+        return products;
     }
 
     public List<Product> getPopularProducts() {

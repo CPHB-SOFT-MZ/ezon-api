@@ -105,6 +105,7 @@ angular.module('myApp.controllers', [])
                                 ResultData.setData(data);
                                 $scope.data = ResultData.getData();
                                 $scope.category = "undefined";
+                                $scope.currentPage = 0;
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
