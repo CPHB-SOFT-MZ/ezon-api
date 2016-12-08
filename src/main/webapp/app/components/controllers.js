@@ -46,13 +46,13 @@ angular.module('myApp.controllers', [])
                     }
 
                     $http({
-                        url: 'http://localhost:8084/api/api/products/' + searchText,
+                        url: 'http://localhost:8084/api/api/products/' + category + searchText,
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {
                                 ResultData.setData(data);
                                 $window.location.href = "#/result";
-
+                                $scope.category = "undefined";
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);
@@ -74,6 +74,18 @@ angular.module('myApp.controllers', [])
             }])
 
         .controller("ResultCtrl", ["ResultData", '$scope', '$http', function (ResultData, $scope, $http) {
+
+                $scope.currentPage = 0;
+                $scope.pageSize = 6;
+                $scope.numberOfPages = function () {
+                    return Math.ceil($scope.data.length / $scope.pageSize);
+                };
+
+                $scope.scrollTop = function (num) {
+                    $scope.currentPage = $scope.currentPage + num;
+                    window.scrollTo(0, 0);
+                };
+
                 $scope.data = ResultData.getData();
                 $scope.getResults = function (searchText, category) {
                     console.log(searchText);
@@ -86,12 +98,13 @@ angular.module('myApp.controllers', [])
                     }
 
                     $http({
-                        url: 'http://localhost:8084/api/api/products/' + searchText,
+                        url: 'http://localhost:8084/api/api/products/' + category + searchText,
                         method: 'GET'
                     })
                             .success(function (data, status, headers, config) {
                                 ResultData.setData(data);
                                 $scope.data = ResultData.getData();
+                                $scope.category = "undefined";
                             })
                             .error(function (data, status, headers, config) {
                                 console.log("Error " + data);

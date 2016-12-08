@@ -50,7 +50,7 @@ public class CollectorControllerTest {
         System.out.println("getProductsBySearchAndCategory");
         
         String searchString = "audi";
-        String category = "biler";
+        String category = "vehiclesandaccess";
         List<Product> products = new ArrayList();
         DataCollector dataCollector = mock(DataCollector.class);
         List<DataCollector> dataCollectors = new ArrayList();
@@ -58,6 +58,7 @@ public class CollectorControllerTest {
         
         CollectorController instance = new CollectorController(dataCollectors);
         when(dataCollector.getProductsBySearchAndCategory(category, searchString)).thenReturn(products);
+        when(dataCollector.getDataCollectorID()).thenReturn("ebay");
         List<Product> result = instance.getProductsBySearchAndCategory(category, searchString);
         assertEquals(products, result);
     }
@@ -77,6 +78,7 @@ public class CollectorControllerTest {
         
         CollectorController instance = new CollectorController(dataCollectors);
         when(dataCollector.getProductsBySearch(searchString)).thenReturn(products);
+        
         List<Product> result = instance.getProductsBySearch(searchString);
         assertEquals(products, result);
     }
@@ -88,7 +90,7 @@ public class CollectorControllerTest {
     public void testGetProductsFromCategory() {
         System.out.println("getProductsBySearchAndCategory");
         
-        String category = "biler";
+        String category = "hobby";
         List<Product> products = new ArrayList();
         DataCollector dataCollector = mock(DataCollector.class);
         List<DataCollector> dataCollectors = new ArrayList();
@@ -96,6 +98,7 @@ public class CollectorControllerTest {
         
         CollectorController instance = new CollectorController(dataCollectors);
         when(dataCollector.getProductsFromCategory(category)).thenReturn(products);
+        when(dataCollector.getDataCollectorID()).thenReturn("dba");
         List<Product> result = instance.getProductsFromCategory(category);
         assertEquals(products, result);
     }

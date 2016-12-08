@@ -1,39 +1,13 @@
 ----------------------------------------------------------------
-<<<<<<< HEAD
-<<<<<<< HEAD
-Wed Dec 07 10:26:32 CET 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0158-d89b-153d-000006d2b150 
-on database directory C:\Users\danie\Documents\NetBeansProjects\EZON_API\target\testDB with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
-Loaded from file:/C:/Users/danie/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_60-b27
-user.dir=C:\Users\danie\Documents\NetBeansProjects\EZON_API
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
-=======
-Wed Dec 07 11:28:49 CET 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0158-d8d4-192b-00000811d140 
-on database directory /Users/philliphbrink/NetBeansProjects/3. Semester/Semester project/ezon-api/target/testDB with class loader sun.misc.Launcher$AppClassLoader@232204a1 
-Loaded from file:/Users/philliphbrink/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_60-b27
-user.dir=/Users/philliphbrink/NetBeansProjects/3. Semester/Semester project/ezon-api
-os.name=Mac OS X
-os.arch=x86_64
-os.version=10.11.6
->>>>>>> fddf96051d56e9113a95584450f6c524e87170ff
-=======
-Wed Dec 07 12:37:04 CET 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0158-d912-98d6-0000074037c8 
-on database directory C:\Users\kaspe\Desktop\School\Sem3-Project\ezon-api\target\testDB with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
-Loaded from file:/C:/Users/kaspe/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+Thu Dec 08 00:33:43 CET 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0158-dba2-b573-000006a5ad70 
+on database directory C:\Users\Daniel\Documents\NetBeansProjects\ezon-api\target\testDB with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
+Loaded from file:/C:/Users/Daniel/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_65-b17
-user.dir=C:\Users\kaspe\Desktop\School\Sem3-Project\ezon-api
+user.dir=C:\Users\Daniel\Documents\NetBeansProjects\ezon-api
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
->>>>>>> 63ea4fa81ec3acd2ef505f5304f41035c1ee3d7c
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

@@ -58,4 +58,9 @@ public class EbayDataCollector implements DataCollector {
                 .get(String.class));
     }
 
+    @Override
+    public String getDataCollectorID() {
+        return "ebay";
+    }
+
 }

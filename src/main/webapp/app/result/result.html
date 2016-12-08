@@ -16,14 +16,22 @@
                         <input ng-model="searchText" type="text" class="form-control" name="x" placeholder="Search for products">
                         <div class="input-group-btn search-panel">
                             <select ng-model="category" class="btn btn-default" id="search_concept">
-                                <option class="caret" value="undefined" selected="selected">ALL Categories</option>
+                                <option value="undefined" selected="selected">All Categories</option>
                                 <option value="vehiclesandaccess">Vehicles & Accessories</option>
                                 <option value="estate">Estate</option>
                                 <option value="homeaccess">Home Accessories</option>
-                                <option>CARS</option>
-                                <option>TEXT BOOKS</option>
-                                <option>FURNITURES</option>
-                                <option>ELECTRONICS</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="animals">Animals</option>
+                                <option value="tickets">Tickets</option>
+                                <option value="clothesfashion">Clothes & Fashion</option>
+                                <option value="sport">Sport</option>
+                                <option value="hobby">Hobby</option>
+                                <option value="music">Music</option>
+                                <option value="kids">Kids</option>
+                                <option value="books">Books</option>
+                                <option value="industry">Industry</option>
+                                <option value="vacation">Vacation</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
                         <span class="input-group-btn">
@@ -39,7 +47,7 @@
                 </div>
                 <div class="products-content">
                     <ul>
-                        <li ng-repeat="p in data| product">
+                        <li ng-repeat="p in data| product | startFrom:currentPage * pageSize | limitTo:pageSize">
                             <div class="products-cont-lft">
                                 <img src="{{p.thumbnailImage}}" class="image-responsive">
                                 <div class="prod-cont-para">
@@ -49,18 +57,20 @@
                             </div>
                             <div class="products-cont-rgt">
                                 <a href="{{p.url}}" class="btn buy-now"><span>{{p.price}} dkk</span></a>
-
                             </div>
                         </li>
                     </ul>
+                    <div class="col-md-offset-5">
+                        <button class="btn btn-default" ng-disabled="currentPage == 0" ng-click="scrollTop(-1)">
+                            Previous
+                        </button>
+                        {{currentPage + 1}} / {{numberOfPages()}}
+                        <button class="btn btn-default" ng-disabled="currentPage >= data.length / pageSize - 1" ng-click="scrollTop(1)">
+                            Next
+                        </button>
+                    </div>
                 </div>
-
             </div>
-
-
         </div>
-
-
-
     </body>
 </html>

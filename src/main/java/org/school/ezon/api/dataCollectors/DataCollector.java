@@ -19,4 +19,5 @@ public interface DataCollector {
     List<Product> getProductsBySearch(String searchString);
 
     List<Product> getProductsBySearchAndCategory(String categoryId, String searchString);
+    String getDataCollectorID();
 }
