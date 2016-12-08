@@ -4,26 +4,26 @@
 
 angular.module('myApp.controllers', [])
         .controller('AppCtrl', ['$scope', function ($scope) {
-            console.log(localStorage.clickcount)
-            showPopUp();
-            function showPopUp() {
-                if (localStorage.clickcount == 1) {
-                    document.getElementById('ac-wrapper').style.display = "none";
-                }
-            }
-
-            $scope.clickCounter = function() {
-                if (typeof (Storage) !== "undefined") {
-                    if (localStorage.clickcount) {
-                        localStorage.clickcount = Number(localStorage.clickcount) + 1;
-                        document.getElementById('ac-wrapper').style.display = "none";
-                    } else {
-                        localStorage.clickcount = 1;
+                console.log(localStorage.clickcount)
+                showPopUp();
+                function showPopUp() {
+                    if (localStorage.clickcount == 1) {
                         document.getElementById('ac-wrapper').style.display = "none";
                     }
                 }
-            }
-        }])
+
+                $scope.clickCounter = function () {
+                    if (typeof (Storage) !== "undefined") {
+                        if (localStorage.clickcount) {
+                            localStorage.clickcount = Number(localStorage.clickcount) + 1;
+                            document.getElementById('ac-wrapper').style.display = "none";
+                        } else {
+                            localStorage.clickcount = 1;
+                            document.getElementById('ac-wrapper').style.display = "none";
+                        }
+                    }
+                }
+            }])
         .controller('IndexCtrl', ["ResultData", '$window', '$scope', '$http', function (ResultData, $window, $scope, $http) {
                 $scope.category = "undefined";
 
@@ -127,6 +127,23 @@ angular.module('myApp.controllers', [])
                                 console.log("Error " + data);
                                 alert("The services is currently down");
                             });
+                };
+
+                $scope.saveClick = function (product) {
+                    $http({
+                        url: 'http://localhost:8084/api/api/products/click',
+                        method: 'POST',
+                        data: JSON.stringify({
+                            title: product.title,
+                            url: product.url,
+                            price: product.price,
+                            location: product.site
+                        })
+                    }).success(function (data) {
+                        console.log(data);
+                    }).error(function (data) {
+                        console.log(data);
+                    });
                 };
             }]);
 

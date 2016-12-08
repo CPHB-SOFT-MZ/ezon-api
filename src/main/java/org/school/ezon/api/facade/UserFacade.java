@@ -85,10 +85,9 @@ public class UserFacade implements Facade {
         EntityManager em = getEntityManager();
         popularSearches = (List) em.createQuery("SELECT alls from AllSearches alls ORDER BY alls.count DESC", AllSearches.class).setMaxResults(4).getResultList();
         return popularSearches;
-            
-        }
 
-    
+    }
+
     private AllSearches findSearch(String keyword) {
         EntityManager em = getEntityManager();
         return em.find(AllSearches.class, keyword);
