@@ -6,10 +6,14 @@
 package org.school.ezon.api.endpoints;
 
 import java.util.List;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
@@ -17,6 +21,7 @@ import javax.ws.rs.core.Response;
 import org.school.ezon.api.controllers.Controller;
 import org.school.ezon.api.controllers.StateInit;
 import org.school.ezon.api.pojo.Product;
+import org.school.ezon.api.entity.ClickedProduct;
 
 /**
  * REST Web Service
@@ -86,5 +91,15 @@ public class ProductsEndpoint {
     public Response getPopularProducts() {
         List<Product> products = ctrl.getPopularProducts();
         return Response.ok(products).build();
+    }
+    
+    @Path("/click")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response click(String json) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        ClickedProduct product = mapper.readValue(json, ClickedProduct.class);
+        ctrl.registerClick(product);
+        return Response.ok().build();
     }
 }

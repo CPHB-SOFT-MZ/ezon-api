@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import org.school.ezon.api.Exceptions.UserExistException;
 import org.school.ezon.api.dataFormatters.SpaceFormatter;
+import org.school.ezon.api.entity.ClickedProduct;
 import org.school.ezon.api.entity.Users;
 import org.school.ezon.api.facade.Facade;
 import org.school.ezon.api.pojo.Product;
@@ -70,5 +71,9 @@ public class Controller {
 
     public Users signUp(String email, String password) throws UserExistException {
         return facade.createUser(email, password);
+    }
+    
+    public void registerClick(ClickedProduct product){
+        facade.updateClickedLink(product);
     }
 }

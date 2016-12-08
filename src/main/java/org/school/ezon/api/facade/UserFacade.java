@@ -13,6 +13,7 @@ import javax.persistence.EntityManagerFactory;
 import org.school.ezon.api.Exceptions.UserExistException;
 import org.school.ezon.api.dataFormatters.KeywordFormatter;
 import org.school.ezon.api.entity.AllSearches;
+import org.school.ezon.api.entity.ClickedProduct;
 import org.school.ezon.api.entity.UserSearches;
 import org.school.ezon.api.entity.Users;
 
@@ -60,8 +61,7 @@ public class UserFacade implements Facade {
         AllSearches as = new AllSearches();
         as.setSearchWord(keyword);
         as.setCount(1);
-
-        AllSearches existingObject = em.find(AllSearches.class, keyword);
+        AllSearches existingObject = findSearch(keyword);
 
         if (existingObject == null) {
             em.getTransaction().begin();
@@ -79,19 +79,45 @@ public class UserFacade implements Facade {
         }
     }
 
-    private AllSearches findSearch(String keyword) {
-        EntityManager em = getEntityManager();
-        return null;
-    }
-
     @Override
     public List<AllSearches> getPopularSearches() {
         List<AllSearches> popularSearches = new ArrayList();
         EntityManager em = getEntityManager();
-
         popularSearches = (List) em.createQuery("SELECT alls from AllSearches alls ORDER BY alls.count DESC", AllSearches.class).setMaxResults(4).getResultList();
-
         return popularSearches;
+            
+        }
+
+    
+    private AllSearches findSearch(String keyword) {
+        EntityManager em = getEntityManager();
+        return em.find(AllSearches.class, keyword);
+    }
+
+    @Override
+    public void updateClickedLink(ClickedProduct product) {
+        EntityManager em = getEntityManager();
+
+        product.setCount(1);
+        ClickedProduct existing = findClickedProduct(product.getUrl());
+
+        if (existing == null) {
+            em.getTransaction().begin();
+            em.persist(product);
+            em.getTransaction().commit();
+            em.close();
+        } else {
+            em.getTransaction().begin();
+            existing.setCount(existing.getCount() + 1);
+            em.merge(existing);
+            em.getTransaction().commit();
+            em.close();
+        }
+    }
+
+    private ClickedProduct findClickedProduct(String url) {
+        EntityManager em = getEntityManager();
+        return em.find(ClickedProduct.class, url);
     }
 
 }
